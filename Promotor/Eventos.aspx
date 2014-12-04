@@ -4,25 +4,29 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
-    <div style="text-align:center;"><asp:Label ID="Label1" Text="Mis Eventos" runat="server" /></div>
+    <div style="text-align:center;"><asp:Label ID="Label1" Text="Mis Eventos" class="lead" runat="server" /></div>
     <br />
-    <div id="Eventos">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sqlEventos" Width="808px" AllowPaging="True" AllowSorting="True">
-            <Columns>
-                <asp:CommandField ShowEditButton="True" />
-                <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" SortExpression="Id" />
-                <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion" />
-                <asp:BoundField DataField="Ubicacion" HeaderText="Ubicación" SortExpression="Ubicacion" />
-                <asp:BoundField DataField="Fecha" HeaderText="Fecha" SortExpression="Fecha" />
-                <asp:BoundField DataField="Hora" HeaderText="Hora" SortExpression="Hora" />
-                <asp:BoundField DataField="Categoria" HeaderText="Categoría" SortExpression="Categoria" />
-                <asp:BoundField DataField="Reservar" HeaderText="Reservar" SortExpression="Reservar" />
-                <asp:BoundField DataField="Tiempo_Reserva" HeaderText="Tiempo Reserva" SortExpression="Tiempo_Reserva" />
-            </Columns>
-            <EmptyDataTemplate>
-                No Hay Eventos Disponibles
-            </EmptyDataTemplate>
-        </asp:GridView>
+    <div id="contenedor">
+        <div id="contenido">
+            <div id="eventos">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sqlEventos" Width="100%" AllowPaging="True" AllowSorting="True">
+                    <Columns>
+                        <asp:CommandField ShowEditButton="True" />
+                        <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" SortExpression="Id" />
+                        <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion" />
+                        <asp:BoundField DataField="Ubicacion" HeaderText="Ubicación" SortExpression="Ubicacion" />
+                        <asp:BoundField DataField="Fecha" HeaderText="Fecha" SortExpression="Fecha" />
+                        <asp:BoundField DataField="Hora" HeaderText="Hora" SortExpression="Hora" />
+                        <asp:BoundField DataField="Categoria" HeaderText="Categoría" SortExpression="Categoria" />
+                        <asp:BoundField DataField="Reservar" HeaderText="Reservar" SortExpression="Reservar" />
+                        <asp:BoundField DataField="Tiempo_Reserva" HeaderText="Tiempo Reserva" SortExpression="Tiempo_Reserva" />
+                    </Columns>
+                    <EmptyDataTemplate>
+                        No Hay Eventos Disponibles
+                    </EmptyDataTemplate>
+                </asp:GridView>
+            </div>
+        </div>
     </div>
     <br />
     <div id="buttons">
