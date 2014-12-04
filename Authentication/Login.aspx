@@ -7,10 +7,12 @@
     <div class="form-signin">
         <h2 class="form-signin-heading">Por favor, inicie sesión</h2>
         <label for="inputEmail" class="sr-only">Correo electrónico</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Correo electrónico" required autofocus>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Correo electrónico" required autofocus />
+        <br />
         <label for="inputPassword" class="sr-only">Contraseña</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
-        
+        <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required />
+        <br />
+
         <button class="btn btn-primary btn-block" type="submit">Iniciar sesión</button>
         <button class="btn btn-primary btn-block" >Registrarse</button>
         </div>
