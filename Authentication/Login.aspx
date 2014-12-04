@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div style="vertical-align: middle; text-align: center;">
+        <br />
         <asp:Login ID="Login1" runat="server">
         </asp:Login>
     </div>

@@ -1,3 +1,38 @@
 ﻿.main-content {
     padding-top: 70px;
 }
+
+#eventos, #Formulario {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 0px;
+  text-align: center;
+}
+
+#Formulario {
+    width: 38%;
+    text-align: left;
+}
+
+#buttons {
+  text-align: center;
+}
+
+#contenedor {
+  display: table;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+#contenido {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+}
+
+.new {
+    margin: 30px 0px;
+    width: 39%;
+    display: inline-block;
+}
