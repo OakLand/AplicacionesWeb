@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <form class="form-signin" role="form">
+    <form class="form-signin" role="form" method="post">
     <div class="form-signin">
         <h2 class="form-signin-heading">Por favor, inicie sesión</h2>
         <label for="inputEmail" class="sr-only">Correo electrónico</label>

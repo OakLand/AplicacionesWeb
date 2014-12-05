@@ -1,0 +1,213 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="CrearBoletos.aspx.vb" Inherits="Promotor_CrearBoletos" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <br />
+    <div style="display: inline-block; float: left">
+        <asp:FormView ID="formBoleto" runat="server" DataKeyNames="Id" DataSourceID="sqlBoleto" DefaultMode="Insert" Width="390px">
+            <EditItemTemplate>
+                Id:
+                <asp:Label ID="IdLabel1" runat="server" Text='<%# Eval("Id") %>' />
+                <br />
+                Id_Persona:
+                <asp:TextBox ID="Id_PersonaTextBox" runat="server" Text='<%# Bind("Id_Persona") %>' />
+                <br />
+                Id_Area:
+                <asp:TextBox ID="Id_AreaTextBox" runat="server" Text='<%# Bind("Id_Area") %>' />
+                <br />
+                Id_Seccion:
+                <asp:TextBox ID="Id_SeccionTextBox" runat="server" Text='<%# Bind("Id_Seccion") %>' />
+                <br />
+                Fila:
+                <asp:TextBox ID="FilaTextBox" runat="server" Text='<%# Bind("Fila") %>' />
+                <br />
+                No_Asiento:
+                <asp:TextBox ID="No_AsientoTextBox" runat="server" Text='<%# Bind("No_Asiento") %>' />
+                <br />
+                Costo:
+                <asp:TextBox ID="CostoTextBox" runat="server" Text='<%# Bind("Costo") %>' />
+                <br />
+                Tipo:
+                <asp:TextBox ID="TipoTextBox" runat="server" Text='<%# Bind("Tipo") %>' />
+                <br />
+                Fecha_Reserva:
+                <asp:TextBox ID="Fecha_ReservaTextBox" runat="server" Text='<%# Bind("Fecha_Reserva") %>' />
+                <br />
+                Fecha_Pago:
+                <asp:TextBox ID="Fecha_PagoTextBox" runat="server" Text='<%# Bind("Fecha_Pago") %>' />
+                <br />
+                Id_Evento:
+                <asp:TextBox ID="Id_EventoTextBox" runat="server" Text='<%# Bind("Id_Evento") %>' />
+                <br />
+                <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
+                &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+            </EditItemTemplate>
+            <InsertItemTemplate>
+                Id:
+                <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
+                <br />
+                Id_Persona:
+                <asp:TextBox ID="Id_PersonaTextBox" runat="server" Text='<%# Bind("Id_Persona") %>' />
+                <br />
+                Id_Area:
+                <asp:TextBox ID="Id_AreaTextBox" runat="server" Text='<%# Bind("Id_Area") %>' />
+                <br />
+                Id_Seccion:
+                <asp:TextBox ID="Id_SeccionTextBox" runat="server" Text='<%# Bind("Id_Seccion") %>' />
+                <br />
+                Fila:
+                <asp:TextBox ID="FilaTextBox" runat="server" Text='<%# Bind("Fila") %>' />
+                <br />
+                No_Asiento:
+                <asp:TextBox ID="No_AsientoTextBox" runat="server" Text='<%# Bind("No_Asiento") %>' />
+                <br />
+                Costo:
+                <asp:TextBox ID="CostoTextBox" runat="server" Text='<%# Bind("Costo") %>' />
+                <br />
+                Tipo:
+                <asp:TextBox ID="TipoTextBox" runat="server" Text='<%# Bind("Tipo") %>' />
+                <br />
+                Fecha_Reserva:
+                <asp:TextBox ID="Fecha_ReservaTextBox" runat="server" Text='<%# Bind("Fecha_Reserva") %>' />
+                <br />
+                Fecha_Pago:
+                <asp:TextBox ID="Fecha_PagoTextBox" runat="server" Text='<%# Bind("Fecha_Pago") %>' />
+                <br />
+                Id_Evento:
+                <asp:TextBox ID="Id_EventoTextBox" runat="server" Text='<%# Bind("Id_Evento") %>' />
+                <br />
+                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insertar" />
+                &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+            </InsertItemTemplate>
+            <ItemTemplate>
+                Id:
+                <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
+                <br />
+                Id_Persona:
+                <asp:Label ID="Id_PersonaLabel" runat="server" Text='<%# Bind("Id_Persona") %>' />
+                <br />
+                Id_Area:
+                <asp:Label ID="Id_AreaLabel" runat="server" Text='<%# Bind("Id_Area") %>' />
+                <br />
+                Id_Seccion:
+                <asp:Label ID="Id_SeccionLabel" runat="server" Text='<%# Bind("Id_Seccion") %>' />
+                <br />
+                Fila:
+                <asp:Label ID="FilaLabel" runat="server" Text='<%# Bind("Fila") %>' />
+                <br />
+                No_Asiento:
+                <asp:Label ID="No_AsientoLabel" runat="server" Text='<%# Bind("No_Asiento") %>' />
+                <br />
+                Costo:
+                <asp:Label ID="CostoLabel" runat="server" Text='<%# Bind("Costo") %>' />
+                <br />
+                Tipo:
+                <asp:Label ID="TipoLabel" runat="server" Text='<%# Bind("Tipo") %>' />
+                <br />
+                Fecha_Reserva:
+                <asp:Label ID="Fecha_ReservaLabel" runat="server" Text='<%# Bind("Fecha_Reserva") %>' />
+                <br />
+                Fecha_Pago:
+                <asp:Label ID="Fecha_PagoLabel" runat="server" Text='<%# Bind("Fecha_Pago") %>' />
+                <br />
+                Id_Evento:
+                <asp:Label ID="Id_EventoLabel" runat="server" Text='<%# Bind("Id_Evento") %>' />
+                <br />
+                <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
+                &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Eliminar" />
+                &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Nuevo" />
+            </ItemTemplate>
+        </asp:FormView>
+    </div>
+    <div style="float: left; width: 50%;">
+    </div>
+    <div style="float: left; width: 50%;">
+    </div>
+    <div style="clear:both;">
+        <br />
+        <br />
+        <asp:SqlDataSource ID="sqlBoleto" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DataBase %>" DeleteCommand="DELETE FROM [Boleto] WHERE [Id] = @original_Id AND (([Id_Persona] = @original_Id_Persona) OR ([Id_Persona] IS NULL AND @original_Id_Persona IS NULL)) AND [Id_Area] = @original_Id_Area AND [Id_Seccion] = @original_Id_Seccion AND (([Fila] = @original_Fila) OR ([Fila] IS NULL AND @original_Fila IS NULL)) AND (([No_Asiento] = @original_No_Asiento) OR ([No_Asiento] IS NULL AND @original_No_Asiento IS NULL)) AND [Costo] = @original_Costo AND [Tipo] = @original_Tipo AND (([Fecha_Reserva] = @original_Fecha_Reserva) OR ([Fecha_Reserva] IS NULL AND @original_Fecha_Reserva IS NULL)) AND (([Fecha_Pago] = @original_Fecha_Pago) OR ([Fecha_Pago] IS NULL AND @original_Fecha_Pago IS NULL)) AND [Id_Evento] = @original_Id_Evento" InsertCommand="INSERT INTO [Boleto] ([Id], [Id_Persona], [Id_Area], [Id_Seccion], [Fila], [No_Asiento], [Costo], [Tipo], [Fecha_Reserva], [Fecha_Pago], [Id_Evento]) VALUES (@Id, @Id_Persona, @Id_Area, @Id_Seccion, @Fila, @No_Asiento, @Costo, @Tipo, @Fecha_Reserva, @Fecha_Pago, @Id_Evento)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Boleto]" UpdateCommand="UPDATE [Boleto] SET [Id_Persona] = @Id_Persona, [Id_Area] = @Id_Area, [Id_Seccion] = @Id_Seccion, [Fila] = @Fila, [No_Asiento] = @No_Asiento, [Costo] = @Costo, [Tipo] = @Tipo, [Fecha_Reserva] = @Fecha_Reserva, [Fecha_Pago] = @Fecha_Pago, [Id_Evento] = @Id_Evento WHERE [Id] = @original_Id AND (([Id_Persona] = @original_Id_Persona) OR ([Id_Persona] IS NULL AND @original_Id_Persona IS NULL)) AND [Id_Area] = @original_Id_Area AND [Id_Seccion] = @original_Id_Seccion AND (([Fila] = @original_Fila) OR ([Fila] IS NULL AND @original_Fila IS NULL)) AND (([No_Asiento] = @original_No_Asiento) OR ([No_Asiento] IS NULL AND @original_No_Asiento IS NULL)) AND [Costo] = @original_Costo AND [Tipo] = @original_Tipo AND (([Fecha_Reserva] = @original_Fecha_Reserva) OR ([Fecha_Reserva] IS NULL AND @original_Fecha_Reserva IS NULL)) AND (([Fecha_Pago] = @original_Fecha_Pago) OR ([Fecha_Pago] IS NULL AND @original_Fecha_Pago IS NULL)) AND [Id_Evento] = @original_Id_Evento">
+            <DeleteParameters>
+                <asp:Parameter Name="original_Id" Type="Int32" />
+                <asp:Parameter Name="original_Id_Persona" Type="Int32" />
+                <asp:Parameter Name="original_Id_Area" Type="Int32" />
+                <asp:Parameter Name="original_Id_Seccion" Type="Int32" />
+                <asp:Parameter Name="original_Fila" Type="Int32" />
+                <asp:Parameter Name="original_No_Asiento" Type="Int32" />
+                <asp:Parameter Name="original_Costo" Type="Decimal" />
+                <asp:Parameter Name="original_Tipo" Type="Int32" />
+                <asp:Parameter Name="original_Fecha_Reserva" Type="DateTime" />
+                <asp:Parameter Name="original_Fecha_Pago" Type="DateTime" />
+                <asp:Parameter Name="original_Id_Evento" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="Id" Type="Int32" />
+                <asp:Parameter Name="Id_Persona" Type="Int32" />
+                <asp:Parameter Name="Id_Area" Type="Int32" />
+                <asp:Parameter Name="Id_Seccion" Type="Int32" />
+                <asp:Parameter Name="Fila" Type="Int32" />
+                <asp:Parameter Name="No_Asiento" Type="Int32" />
+                <asp:Parameter Name="Costo" Type="Decimal" />
+                <asp:Parameter Name="Tipo" Type="Int32" />
+                <asp:Parameter Name="Fecha_Reserva" Type="DateTime" />
+                <asp:Parameter Name="Fecha_Pago" Type="DateTime" />
+                <asp:Parameter Name="Id_Evento" Type="Int32" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Id_Persona" Type="Int32" />
+                <asp:Parameter Name="Id_Area" Type="Int32" />
+                <asp:Parameter Name="Id_Seccion" Type="Int32" />
+                <asp:Parameter Name="Fila" Type="Int32" />
+                <asp:Parameter Name="No_Asiento" Type="Int32" />
+                <asp:Parameter Name="Costo" Type="Decimal" />
+                <asp:Parameter Name="Tipo" Type="Int32" />
+                <asp:Parameter Name="Fecha_Reserva" Type="DateTime" />
+                <asp:Parameter Name="Fecha_Pago" Type="DateTime" />
+                <asp:Parameter Name="Id_Evento" Type="Int32" />
+                <asp:Parameter Name="original_Id" Type="Int32" />
+                <asp:Parameter Name="original_Id_Persona" Type="Int32" />
+                <asp:Parameter Name="original_Id_Area" Type="Int32" />
+                <asp:Parameter Name="original_Id_Seccion" Type="Int32" />
+                <asp:Parameter Name="original_Fila" Type="Int32" />
+                <asp:Parameter Name="original_No_Asiento" Type="Int32" />
+                <asp:Parameter Name="original_Costo" Type="Decimal" />
+                <asp:Parameter Name="original_Tipo" Type="Int32" />
+                <asp:Parameter Name="original_Fecha_Reserva" Type="DateTime" />
+                <asp:Parameter Name="original_Fecha_Pago" Type="DateTime" />
+                <asp:Parameter Name="original_Id_Evento" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="sqlSeccion" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DataBase %>" DeleteCommand="DELETE FROM [Seccion] WHERE [Id] = @original_Id AND [Descripcion] = @original_Descripcion" InsertCommand="INSERT INTO [Seccion] ([Id], [Descripcion]) VALUES (@Id, @Descripcion)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Seccion]" UpdateCommand="UPDATE [Seccion] SET [Descripcion] = @Descripcion WHERE [Id] = @original_Id AND [Descripcion] = @original_Descripcion">
+            <DeleteParameters>
+                <asp:Parameter Name="original_Id" Type="Int32" />
+                <asp:Parameter Name="original_Descripcion" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="Id" Type="Int32" />
+                <asp:Parameter Name="Descripcion" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Descripcion" Type="String" />
+                <asp:Parameter Name="original_Id" Type="Int32" />
+                <asp:Parameter Name="original_Descripcion" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="sqlArea" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DataBase %>" DeleteCommand="DELETE FROM [Area] WHERE [Id] = @original_Id AND [Descripcion] = @original_Descripcion" InsertCommand="INSERT INTO [Area] ([Id], [Descripcion]) VALUES (@Id, @Descripcion)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Area]" UpdateCommand="UPDATE [Area] SET [Descripcion] = @Descripcion WHERE [Id] = @original_Id AND [Descripcion] = @original_Descripcion">
+            <DeleteParameters>
+                <asp:Parameter Name="original_Id" Type="Int32" />
+                <asp:Parameter Name="original_Descripcion" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="Id" Type="Int32" />
+                <asp:Parameter Name="Descripcion" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Descripcion" Type="String" />
+                <asp:Parameter Name="original_Id" Type="Int32" />
+                <asp:Parameter Name="original_Descripcion" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+    </div>
+</asp:Content>
+
