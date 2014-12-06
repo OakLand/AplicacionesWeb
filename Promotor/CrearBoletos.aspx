@@ -9,124 +9,35 @@
         </asp:ToolkitScriptManager>
     <br />
     <div style="display: inline-block; float: left">
-        <asp:FormView ID="formBoleto" runat="server" DataKeyNames="Id" DataSourceID="sqlBoleto" DefaultMode="Insert" Width="390px">
-            <EditItemTemplate>
-                Id:
-                <asp:Label ID="IdLabel1" runat="server" Text='<%# Eval("Id") %>' />
-                <br />
-                Id_Persona:
-                <asp:TextBox ID="Id_PersonaTextBox" runat="server" Text='<%# Bind("Id_Persona") %>' />
-                <br />
-                Id_Area:
-                <asp:TextBox ID="Id_AreaTextBox" runat="server" Text='<%# Bind("Id_Area") %>' />
-                <br />
-                Id_Seccion:
-                <asp:TextBox ID="Id_SeccionTextBox" runat="server" Text='<%# Bind("Id_Seccion") %>' />
-                <br />
-                Fila:
-                <asp:TextBox ID="FilaTextBox" runat="server" Text='<%# Bind("Fila") %>' />
-                <br />
-                No_Asiento:
-                <asp:TextBox ID="No_AsientoTextBox" runat="server" Text='<%# Bind("No_Asiento") %>' />
-                <br />
-                Costo:
-                <asp:TextBox ID="CostoTextBox" runat="server" Text='<%# Bind("Costo") %>' />
-                <br />
-                Tipo:
-                <asp:TextBox ID="TipoTextBox" runat="server" Text='<%# Bind("Tipo") %>' />
-                <br />
-                Fecha_Reserva:
-                <asp:TextBox ID="Fecha_ReservaTextBox" runat="server" Text='<%# Bind("Fecha_Reserva") %>' />
-                <br />
-                Fecha_Pago:
-                <asp:TextBox ID="Fecha_PagoTextBox" runat="server" Text='<%# Bind("Fecha_Pago") %>' />
-                <br />
-                Id_Evento:
-                <asp:TextBox ID="Id_EventoTextBox" runat="server" Text='<%# Bind("Id_Evento") %>' />
-                <br />
-                <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
-                &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
-            </EditItemTemplate>
-            <InsertItemTemplate>
-                Id:
-                <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
-                <br />
-                Id_Persona:
-                <asp:TextBox ID="Id_PersonaTextBox" runat="server" Text='<%# Bind("Id_Persona") %>' />
-                <br />
-                Id_Area:
-                <asp:DropDownList ID="Id_AreaTextBox" runat="server" DataSourceID="sqlArea" DataTextField="Descripcion" DataValueField="Id" SelectedValue='<%# Bind("Id_Area") %>' Width="123px">
-                </asp:DropDownList>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="areaPlus" runat="server" Text="+" OnClick="areaPlus_Click" />
-                <br />
-                Id_Seccion:
-                <asp:DropDownList ID="Id_SeccionTextBox" runat="server" DataSourceID="sqlSeccion" DataTextField="Descripcion" DataValueField="Id" SelectedValue='<%# Bind("Id_Seccion") %>' Width="126px">
-                </asp:DropDownList>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="seccionPlus" runat="server" Text="+" OnClick="seccionPlus_Click" />
-                <br />
-                Fila:
-                <asp:TextBox ID="FilaTextBox" runat="server" Text='<%# Bind("Fila") %>' />
-                <br />
-                No_Asiento: De
-                <asp:TextBox ID="noAsientoDe" runat="server" Height="22px" Width="72px" />
-                &nbsp;Hasta
-                <asp:TextBox ID="TextBox1" runat="server" Height="22px" Width="83px"></asp:TextBox>
-                <br />
-                Costo:
-                <asp:TextBox ID="CostoTextBox" runat="server" Text='<%# Bind("Costo") %>' />
-                <br />
-                Tipo:
-                <asp:TextBox ID="TipoTextBox" runat="server" Text='<%# Bind("Tipo") %>' />
-                <br />
-                Id_Evento:
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="sqlEvento" DataTextField="Descripcion" DataValueField="Id" Height="22px" SelectedValue='<%# Bind("Id_Evento") %>' Width="132px">
-                </asp:DropDownList>
-                <br />
-                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Generar" />
-                &nbsp;&nbsp;&nbsp;
-                <asp:Button ID="terminar" runat="server" OnClick="terminar_Click" Text="Terminar" />
-            </InsertItemTemplate>
-            <ItemTemplate>
-                Id:
-                <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
-                <br />
-                Id_Persona:
-                <asp:Label ID="Id_PersonaLabel" runat="server" Text='<%# Bind("Id_Persona") %>' />
-                <br />
-                Id_Area:
-                <asp:Label ID="Id_AreaLabel" runat="server" Text='<%# Bind("Id_Area") %>' />
-                <br />
-                Id_Seccion:
-                <asp:Label ID="Id_SeccionLabel" runat="server" Text='<%# Bind("Id_Seccion") %>' />
-                <br />
-                Fila:
-                <asp:Label ID="FilaLabel" runat="server" Text='<%# Bind("Fila") %>' />
-                <br />
-                No_Asiento:
-                <asp:Label ID="No_AsientoLabel" runat="server" Text='<%# Bind("No_Asiento") %>' />
-                <br />
-                Costo:
-                <asp:Label ID="CostoLabel" runat="server" Text='<%# Bind("Costo") %>' />
-                <br />
-                Tipo:
-                <asp:Label ID="TipoLabel" runat="server" Text='<%# Bind("Tipo") %>' />
-                <br />
-                Fecha_Reserva:
-                <asp:Label ID="Fecha_ReservaLabel" runat="server" Text='<%# Bind("Fecha_Reserva") %>' />
-                <br />
-                Fecha_Pago:
-                <asp:Label ID="Fecha_PagoLabel" runat="server" Text='<%# Bind("Fecha_Pago") %>' />
-                <br />
-                Id_Evento:
-                <asp:Label ID="Id_EventoLabel" runat="server" Text='<%# Bind("Id_Evento") %>' />
-                <br />
-                <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
-                &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Eliminar" />
-                &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Nuevo" />
-            </ItemTemplate>
-        </asp:FormView>
+        Id_Persona:
+        <asp:TextBox ID="Id_PersonaTextBox" runat="server" Text='<%# Bind("Id_Persona") %>' />
+        <br __designer:mapid="1d" />Id_Area:
+        <asp:DropDownList ID="Id_AreaTextBox" runat="server" DataSourceID="sqlArea" DataTextField="Descripcion" DataValueField="Id" SelectedValue='<%# Bind("Id_Area") %>' Width="123px">
+        </asp:DropDownList>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="areaPlus" runat="server" Text="+" OnClick="areaPlus_Click" />
+        <br __designer:mapid="20" />Id_Seccion:
+        <asp:DropDownList ID="Id_SeccionTextBox" runat="server" DataSourceID="sqlSeccion" DataTextField="Descripcion" DataValueField="Id" SelectedValue='<%# Bind("Id_Seccion") %>' Width="126px">
+        </asp:DropDownList>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="seccionPlus" runat="server" Text="+" OnClick="seccionPlus_Click" />
+        <br __designer:mapid="23" />Fila:
+        <asp:TextBox ID="FilaTextBox" runat="server" Text='<%# Bind("Fila") %>' />
+        <br __designer:mapid="25" />No_Asiento: De
+        <asp:TextBox ID="noAsientoDe" runat="server" Height="22px" Width="72px" />
+        &nbsp;Hasta
+        <asp:TextBox ID="noAsientoHasta" runat="server" Height="22px" Width="83px"></asp:TextBox>
+        <br __designer:mapid="28" />Costo:
+        <asp:TextBox ID="CostoTextBox" runat="server" Text='<%# Bind("Costo") %>' />
+        <br __designer:mapid="2a" />Tipo:
+        <asp:TextBox ID="TipoTextBox" runat="server" Text='<%# Bind("Tipo") %>' />
+        <br __designer:mapid="2c" />Id_Evento:
+        <asp:DropDownList ID="Id_EventoTextBox" runat="server" DataSourceID="sqlEvento" DataTextField="Descripcion" DataValueField="Id" Height="22px" SelectedValue='<%# Bind("Id_Evento") %>' Width="132px">
+        </asp:DropDownList>
+        <br __designer:mapid="2e" />&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="generate" runat="server" OnClick="generate_Click" Text="Generar" />
+&nbsp;
+        <asp:Button ID="terminar" runat="server" OnClick="terminar_Click" Text="Terminar" />
     </div>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" style="float: left; width: 50%;">
         <ContentTemplate>

@@ -21,4 +21,29 @@ Partial Class Promotor_CrearBoletos
     Protected Sub terminar_Click(sender As Object, e As EventArgs)
         Response.Redirect("Eventos.aspx")
     End Sub
+
+    Protected Sub generate_Click(sender As Object, e As EventArgs) Handles generate.Click
+        Try
+            Dim persona As Integer '= obtener de cookie
+            Dim area As Integer = Integer.Parse(Me.Id_AreaTextBox.Text)
+            Dim seccion As Integer = Integer.Parse(Me.Id_SeccionTextBox.Text)
+            Dim fila As Integer = Integer.Parse(Me.FilaTextBox.Text)
+            Dim no_asiento_de As Integer = Integer.Parse(Me.noAsientoDe.Text)
+            Dim no_asiento_hasta As Integer = Integer.Parse(Me.noAsientoHasta.Text)
+            Dim costo As Integer = Integer.Parse(Me.CostoTextBox.Text)
+            Dim tipo As String = Me.TipoTextBox.Text
+            Dim evento As Integer = Integer.Parse(Me.Id_EventoTextBox.Text)
+            If no_asiento_hasta < no_asiento_de Then
+                MsgBox("Ingrese un rango correcto")
+                Me.noAsientoDe.Text = ""
+                Me.noAsientoHasta.Text = ""
+                Exit Sub
+            End If
+            For i As Integer = no_asiento_de To no_asiento_hasta
+                'se guarda la info
+            Next
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class
