@@ -1,8 +1,12 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="CrearBoletos.aspx.vb" Inherits="Promotor_CrearBoletos" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+        </asp:ToolkitScriptManager>
     <br />
     <div style="display: inline-block; float: left">
         <asp:FormView ID="formBoleto" runat="server" DataKeyNames="Id" DataSourceID="sqlBoleto" DefaultMode="Insert" Width="390px">
@@ -51,16 +55,24 @@
                 <asp:TextBox ID="Id_PersonaTextBox" runat="server" Text='<%# Bind("Id_Persona") %>' />
                 <br />
                 Id_Area:
-                <asp:TextBox ID="Id_AreaTextBox" runat="server" Text='<%# Bind("Id_Area") %>' />
+                <asp:DropDownList ID="Id_AreaTextBox" runat="server" DataSourceID="sqlArea" DataTextField="Descripcion" DataValueField="Id" SelectedValue='<%# Bind("Id_Area") %>' Width="123px">
+                </asp:DropDownList>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="areaPlus" runat="server" Text="+" OnClick="areaPlus_Click" />
                 <br />
                 Id_Seccion:
-                <asp:TextBox ID="Id_SeccionTextBox" runat="server" Text='<%# Bind("Id_Seccion") %>' />
+                <asp:DropDownList ID="Id_SeccionTextBox" runat="server" DataSourceID="sqlSeccion" DataTextField="Descripcion" DataValueField="Id" SelectedValue='<%# Bind("Id_Seccion") %>' Width="126px">
+                </asp:DropDownList>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="seccionPlus" runat="server" Text="+" OnClick="seccionPlus_Click" />
                 <br />
                 Fila:
                 <asp:TextBox ID="FilaTextBox" runat="server" Text='<%# Bind("Fila") %>' />
                 <br />
-                No_Asiento:
-                <asp:TextBox ID="No_AsientoTextBox" runat="server" Text='<%# Bind("No_Asiento") %>' />
+                No_Asiento: De
+                <asp:TextBox ID="noAsientoDe" runat="server" Height="22px" Width="72px" />
+                &nbsp;Hasta
+                <asp:TextBox ID="TextBox1" runat="server" Height="22px" Width="83px"></asp:TextBox>
                 <br />
                 Costo:
                 <asp:TextBox ID="CostoTextBox" runat="server" Text='<%# Bind("Costo") %>' />
@@ -68,17 +80,13 @@
                 Tipo:
                 <asp:TextBox ID="TipoTextBox" runat="server" Text='<%# Bind("Tipo") %>' />
                 <br />
-                Fecha_Reserva:
-                <asp:TextBox ID="Fecha_ReservaTextBox" runat="server" Text='<%# Bind("Fecha_Reserva") %>' />
-                <br />
-                Fecha_Pago:
-                <asp:TextBox ID="Fecha_PagoTextBox" runat="server" Text='<%# Bind("Fecha_Pago") %>' />
-                <br />
                 Id_Evento:
-                <asp:TextBox ID="Id_EventoTextBox" runat="server" Text='<%# Bind("Id_Evento") %>' />
+                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="sqlEvento" DataTextField="Descripcion" DataValueField="Id" Height="22px" SelectedValue='<%# Bind("Id_Evento") %>' Width="132px">
+                </asp:DropDownList>
                 <br />
-                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insertar" />
-                &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Generar" />
+                &nbsp;&nbsp;&nbsp;
+                <asp:Button ID="terminar" runat="server" OnClick="terminar_Click" Text="Terminar" />
             </InsertItemTemplate>
             <ItemTemplate>
                 Id:
@@ -120,10 +128,82 @@
             </ItemTemplate>
         </asp:FormView>
     </div>
-    <div style="float: left; width: 50%;">
-    </div>
-    <div style="float: left; width: 50%;">
-    </div>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" style="float: left; width: 50%;">
+        <ContentTemplate>
+            <asp:FormView Visible="false" ID="formArea" runat="server" DataKeyNames="Id" DataSourceID="sqlArea" DefaultMode="Insert">
+                <EditItemTemplate>
+                    Id:
+                    <asp:Label ID="IdLabel1" runat="server" Text='<%# Eval("Id") %>' />
+                    <br />
+                    Descripcion:
+                    <asp:TextBox ID="DescripcionTextBox" runat="server" Text='<%# Bind("Descripcion") %>' />
+                    <br />
+                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
+                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:Label ID="Label1" runat="server" Text="Nueva Área"></asp:Label>
+                    <br />
+                    Id:
+                    <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
+                    <br />
+                    Descripcion:
+                    <asp:TextBox ID="DescripcionTextBox" runat="server" Text='<%# Bind("Descripcion") %>' />
+                    <br />
+                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Guardar" OnClick="InsertButton_Click" />
+                    &nbsp;
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    Id:
+                    <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
+                    <br />
+                    Descripcion:
+                    <asp:Label ID="DescripcionLabel" runat="server" Text='<%# Bind("Descripcion") %>' />
+                    <br />
+                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
+                    &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Eliminar" />
+                    &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Nuevo" />
+                </ItemTemplate>
+            </asp:FormView>
+            <asp:FormView Visible="false" ID="formSeccion" runat="server" DataKeyNames="Id" DataSourceID="sqlSeccion" DefaultMode="Insert">
+                <EditItemTemplate>
+                    Id:
+                    <asp:Label ID="IdLabel1" runat="server" Text='<%# Eval("Id") %>' />
+                    <br />
+                    Descripcion:
+                    <asp:TextBox ID="DescripcionTextBox" runat="server" Text='<%# Bind("Descripcion") %>' />
+                    <br />
+                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
+                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:Label ID="Label2" runat="server" Text="Nueva Sección"></asp:Label>
+                    <br />
+                    Id:
+                    <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
+                    <br />
+                    Descripcion:
+                    <asp:TextBox ID="DescripcionTextBox" runat="server" Text='<%# Bind("Descripcion") %>' />
+                    <br />
+                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Guardar" OnClick="InsertButton_Click1" />
+                    &nbsp;
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    Id:
+                    <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
+                    <br />
+                    Descripcion:
+                    <asp:Label ID="DescripcionLabel" runat="server" Text='<%# Bind("Descripcion") %>' />
+                    <br />
+                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
+                    &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Eliminar" />
+                    &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Nuevo" />
+                </ItemTemplate>
+            </asp:FormView>
+            <br />
+        </ContentTemplate>
+        
+    </asp:UpdatePanel>
     <div style="clear:both;">
         <br />
         <br />
@@ -208,6 +288,7 @@
                 <asp:Parameter Name="original_Descripcion" Type="String" />
             </UpdateParameters>
         </asp:SqlDataSource>
+        <asp:SqlDataSource ID="sqlEvento" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT * FROM [Evento]"></asp:SqlDataSource>
     </div>
 </asp:Content>
 

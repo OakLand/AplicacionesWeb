@@ -38,10 +38,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="Authentication/Login.aspx">Iniciar sesión / Registrarse</a>
+                        <a href="/Authentication/Login.aspx">Iniciar sesión / Registrarse</a>
                     </li>
                     <li>
-                        <a href="Promotor/Eventos.aspx">Eventos</a>
+                        <a href="/Promotor/Eventos.aspx">Eventos</a>
                     </li>
                     <li>
                         <a href="#">Contáctanos</a>

@@ -18,7 +18,7 @@
         </div>
       </form>
 
-    <div style="vertical-align: middle; text-align: center;display:none;">
+    <div style="vertical-align: middle; text-align: center;">
 
         <br />
         <asp:Login ID="Login1" runat="server">

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="NuevoEvento.aspx.vb" Inherits="Promotor_NuevoEvento" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         #TextArea1 {
@@ -14,6 +16,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
     <br />
     <div  style="text-align:center;">
         <asp:Label ID="Label1" runat="server" class="lead" Text="Nuevo Evento"></asp:Label>
@@ -73,6 +77,8 @@
                             <br />
                             Fecha:
                             <asp:TextBox ID="FechaTextBox" runat="server" Text='<%# Bind("Fecha") %>' />
+                            <asp:CalendarExtender ID="FechaTextBox_CalendarExtender" runat="server" Enabled="True" TargetControlID="FechaTextBox">
+                            </asp:CalendarExtender>
                             <br />
                             <br />
                             Reservar:
@@ -96,8 +102,8 @@
                             <asp:TextBox ID="Tiempo_ReservaTextBox" runat="server" Text='<%# Bind("Tiempo_Reserva", "{0}") %>' />
                         </div>
                         <div>
-                            <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insertar" />
-                            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+                            <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insertar" PostBackUrl="~/Promotor/CrearBoletos.aspx" />
+                            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" PostBackUrl="~/Promotor/Eventos.aspx" />
                         </div>
                     </InsertItemTemplate>
                     <ItemTemplate>
