@@ -9,14 +9,14 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap-theme.min.css" />
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 
+    <script src="/assets/js/bootstrap.min.js"></script> 
 </head>
 <body>
 
@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Default.aspx">Todo Ticket</a>
+                <a class="navbar-brand" href="/Default.aspx">Todo Ticket</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -41,10 +41,13 @@
                         <a href="/Authentication/Login.aspx">Iniciar sesión / Registrarse</a>
                     </li>
                     <li>
-                        <a href="/Promotor/Eventos.aspx">Eventos</a>
+                        <a href="/Eventos/Index.aspx">Eventos</a>
                     </li>
                     <li>
                         <a href="#">Contáctanos</a>
+                    </li>
+                    <li>
+                        <asp:Label ID="user" runat="server" style="color: white"></asp:Label>
                     </li>
                 </ul>
             </div>

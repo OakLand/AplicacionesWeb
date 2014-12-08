@@ -1,6 +1,12 @@
 ﻿
 Partial Class Promotor_CrearBoletos
     Inherits System.Web.UI.Page
+    
+    Protected Sub CrearBoletos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Request.Cookies("Tickets")("id") Is Nothing Or Response.Cookies("Tickets")("tipo") <> 2 Then
+            Response.Redirect("/Default.aspx")
+        End If
+    End Sub
 
     Protected Sub areaPlus_Click(sender As Object, e As EventArgs)
         Me.formArea.Visible = True
@@ -24,7 +30,7 @@ Partial Class Promotor_CrearBoletos
 
     Protected Sub generate_Click(sender As Object, e As EventArgs) Handles generate.Click
         Try
-            Dim persona As Integer '= obtener de cookie
+            Dim persona As Integer = Request.Cookies("Tickets")("id")
             Dim area As Integer = Integer.Parse(Me.Id_AreaTextBox.Text)
             Dim seccion As Integer = Integer.Parse(Me.Id_SeccionTextBox.Text)
             Dim fila As Integer = Integer.Parse(Me.FilaTextBox.Text)

@@ -115,9 +115,10 @@ GO
 
 CREATE TABLE [dbo].[Persona](
 	[Id] [int] NOT NULL,
+	[Id_User] [int] NULL,
 	[Nombre] [varchar](128) NOT NULL,
 	[Email] [varchar](60) NOT NULL,
-	[Fotografia] [int] NOT NULL,
+	[Fotografia] [int] NULL,
 	[Estado] [int] NOT NULL,
 	[Tipo] [int] NOT NULL,
  CONSTRAINT [PK_Persona] PRIMARY KEY CLUSTERED 
@@ -127,6 +128,19 @@ CREATE TABLE [dbo].[Persona](
  CONSTRAINT [Email_Persona] UNIQUE NONCLUSTERED 
 (
 	[Email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[Usuario](
+	[Id] [int] NOT NULL,
+	[Id_Persona] [int] NULL,
+	[User] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
