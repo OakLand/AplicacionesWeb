@@ -8,7 +8,7 @@ Public Class Conexion
 
     Public Shared Function Conectado() As Boolean
         Try
-            cnn = New SqlConnection("Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\JAM$\Downloads\Unitec\Desarrollo Aplicaciones Web\Proyecto\AplicacionesWeb\App_Data\AplicacionesWebDB.mdf;Integrated Security=True")
+            cnn = New SqlConnection("Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Luis\Desktop\Repos\AplicacionesWeb\App_Data\AplicacionesWebDB.mdf;Integrated Security=True")
             cnn.Open()
             Return True
         Catch ex As Exception
