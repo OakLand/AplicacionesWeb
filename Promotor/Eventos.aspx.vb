@@ -3,7 +3,8 @@ Partial Class Promotor_Eventos
     Inherits System.Web.UI.Page
     
     Protected Sub Evento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Request.Cookies("Tickets")("id") Is Nothing Or Response.Cookies("Tickets")("tipo") <> 2 Then
+        'MsgBox(Response.Cookies("Tickets")("tipo"))
+        If Request.Cookies("Tickets")("id") Is Nothing Or Request.Cookies("Tickets")("tipo") <> 2 Then
             Response.Redirect("/Default.aspx")
         End If
     End Sub

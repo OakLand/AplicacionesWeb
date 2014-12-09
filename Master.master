@@ -17,6 +17,9 @@
     <link href="/assets/css/style.css" rel="stylesheet" />
     <!-- Latest compiled and minified JavaScript -->
     <script src="/assets/js/bootstrap.min.js"></script> 
+
+    <!-- Ocultar Según Login -->
+    <script src="/assets/js/ocultar.js"></script>
 </head>
 <body>
 
@@ -37,17 +40,32 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <%--<li>
                         <a href="/Authentication/Login.aspx">Iniciar sesión / Registrarse</a>
-                    </li>
+                    </li>--%>
                     <li>
                         <a href="/Eventos/Index.aspx">Eventos</a>
+                    </li>
+                    <li class="Promotor">
+                        <a href="/Promotor/Eventos.aspx">Mis Eventos</a>
                     </li>
                     <li>
                         <a href="#">Contáctanos</a>
                     </li>
-                    <li>
+                    <li class="Conectado">
                         <asp:Label ID="user" runat="server" style="color: white"></asp:Label>
+                    </li>
+                    <li class="Conectado">
+                        <asp:LinkButton ID="link_logout" Text="Salir" runat="server" />
+                    </li>
+                    <li class="">
+                        <asp:TextBox ID="myID" style="display:none" Text="id" runat="server"></asp:TextBox>
+                    </li>
+                    <li class="Desconectado">
+                        <a id="link_login" href="/Authentication/Login.aspx">Iniciar Sesión</a>
+                    </li>
+                    <li class="Desconectado">
+                        <a id="link_register" href="/Authentication/Register.aspx">Registrar</a>
                     </li>
                 </ul>
             </div>

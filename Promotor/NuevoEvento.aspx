@@ -27,118 +27,52 @@
     <div id="contenedor">
         <div id="contenido">
             <div id="Formulario">
-
-                <asp:FormView ID="FormView1" runat="server" DataKeyNames="Id" DataSourceID="sqlEventos" DefaultMode="Insert">
-                    <EditItemTemplate>
-                        Id:
-                        <asp:Label ID="IdLabel1" runat="server" Text='<%# Eval("Id") %>' />
-                        <br />
-                        Id_Persona:
-                        <asp:TextBox ID="Id_PersonaTextBox" runat="server" Text='<%# Bind("Id_Persona") %>' />
-                        <br />
-                        Descripcion:
-                        <asp:TextBox ID="DescripcionTextBox" runat="server" Text='<%# Bind("Descripcion") %>' />
-                        <br />
-                        Ubicacion:
-                        <asp:TextBox ID="UbicacionTextBox" runat="server" Text='<%# Bind("Ubicacion") %>' />
-                        <br />
-                        Fecha:
-                        <asp:TextBox ID="FechaTextBox" runat="server" Text='<%# Bind("Fecha") %>' />
-                        <br />
-                        Hora:
-                        <asp:TextBox ID="HoraTextBox" runat="server" Text='<%# Bind("Hora") %>' />
-                        <br />
-                        Categoria:
-                        <asp:TextBox ID="CategoriaTextBox" runat="server" Text='<%# Bind("Categoria") %>' />
-                        <br />
-                        Reservar:
-                        <asp:TextBox ID="ReservarTextBox" runat="server" Text='<%# Bind("Reservar") %>' />
-                        <br />
-                        Tiempo_Reserva:
-                        <asp:TextBox ID="Tiempo_ReservaTextBox" runat="server" Text='<%# Bind("Tiempo_Reserva") %>' />
-                        <br />
-                        <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
-                        &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                        <div>
-                            Id:
-                            <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
-                        </div>
                         <div class="new">
-                            Id Persona:
-                            <asp:DropDownList ID="Id_PersonaTextBox" runat="server" DataSourceID="sqlPersona" DataTextField="Nombre" DataValueField="Id" SelectedValue='<%# Bind("Id_Persona", "{0}") %>'>
-                            </asp:DropDownList>
-                            <br />
-                            <br />
                             Descripcion:
-                            <asp:TextBox ID="DescripcionTextBox" runat="server" Height="45px" Text='<%# Bind("Descripcion") %>' Width="162px" />
+                            <asp:TextBox ID="DescripcionTextBox" runat="server" Height="45px" Width="162px" required="required" />
                             <br />
                             <br />
                             Fecha:
-                            <asp:TextBox ID="FechaTextBox" runat="server" Text='<%# Bind("Fecha") %>' />
+                            <asp:TextBox ID="FechaTextBox" runat="server" required="required" />
                             <asp:CalendarExtender ID="FechaTextBox_CalendarExtender" runat="server" Enabled="True" TargetControlID="FechaTextBox">
                             </asp:CalendarExtender>
                             <br />
                             <br />
                             Reservar:
-                            <asp:TextBox ID="ReservarTextBox" runat="server" Text='<%# Bind("Reservar") %>' />
-                        </div>
-                        <div class="new" style="float: right">
-                            Categoria:
-                            <asp:DropDownList ID="CategoriaTextBox" runat="server" DataSourceID="sqlCategoria" DataTextField="Nombre" DataValueField="Id" SelectedValue='<%# Bind("Categoria", "{0}") %>'>
+                            <asp:DropDownList ID="ReservarTextBox" class="reservar" runat="server" Width="128px">
+                                <asp:ListItem Value="1">Si</asp:ListItem>
+                                <asp:ListItem Value="0">No</asp:ListItem>
                             </asp:DropDownList>
                             <br />
                             <br />
+                            Categoria:
+                            <asp:DropDownList ID="CategoriaTextBox" runat="server" DataSourceID="sqlCategoria" DataTextField="Nombre" DataValueField="Id" required="required" Height="22px" Width="115px">
+                            </asp:DropDownList>
+                        </div>
+                        <div class="new" style="float: right">
                             Ubicacion:
-                            <asp:TextBox ID="UbicacionTextBox" runat="server" Height="45px" Text='<%# Bind("Ubicacion") %>' Width="155px" />
+                            <asp:TextBox ID="UbicacionTextBox" runat="server" Height="45px"  Width="155px" required="required" />
                             <br />
                             <br />
                             Hora:
-                            <asp:TextBox ID="HoraTextBox" runat="server" Text='<%# Bind("Hora") %>' />
+                            <asp:TextBox ID="HoraTextBox" runat="server" required="required" />
                             <br />
                             <br />
-                            Tiempo_Reserva:
-                            <asp:TextBox ID="Tiempo_ReservaTextBox" runat="server" Text='<%# Bind("Tiempo_Reserva", "{0}") %>' />
+                            Días de Reserva:
+                            <asp:TextBox ID="Tiempo_ReservaTextBox" class="reservar" runat="server" Width="60px" Height="30" Font-Size="Large" required="required" />
+                            <asp:NumericUpDownExtender ID="Tiempo_ReservaTextBox_NumericUpDownExtender" runat="server" Enabled="True" Maximum="100" Minimum="0" RefValues="" ServiceDownMethod="" ServiceDownPath="" ServiceUpMethod="" Tag="" TargetButtonDownID="" TargetButtonUpID="" TargetControlID="Tiempo_ReservaTextBox" Width="100">
+                            </asp:NumericUpDownExtender>
+                            <br />
+                            <br />
+                            <br />
+                            <div style="float:right">
+                                <asp:Button ID="Insert" runat="server" Text="Crear" />
+                                &nbsp;&nbsp;
+                                <asp:linkButton ID="Cancel" runat="server" Text="Cancelar" PostBackUrl="~/Promotor/Eventos.aspx" />
+                            </div>
                         </div>
-                        <div>
-                            <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insertar" PostBackUrl="~/Promotor/CrearBoletos.aspx" />
-                            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" PostBackUrl="~/Promotor/Eventos.aspx" />
-                        </div>
-                    </InsertItemTemplate>
-                    <ItemTemplate>
-                        Id:
-                        <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
-                        <br />
-                        Id_Persona:
-                        <asp:Label ID="Id_PersonaLabel" runat="server" Text='<%# Bind("Id_Persona") %>' />
-                        <br />
-                        Descripcion:
-                        <asp:Label ID="DescripcionLabel" runat="server" Text='<%# Bind("Descripcion") %>' />
-                        <br />
-                        Ubicacion:
-                        <asp:Label ID="UbicacionLabel" runat="server" Text='<%# Bind("Ubicacion") %>' />
-                        <br />
-                        Fecha:
-                        <asp:Label ID="FechaLabel" runat="server" Text='<%# Bind("Fecha") %>' />
-                        <br />
-                        Hora:
-                        <asp:Label ID="HoraLabel" runat="server" Text='<%# Bind("Hora") %>' />
-                        <br />
-                        Categoria:
-                        <asp:Label ID="CategoriaLabel" runat="server" Text='<%# Bind("Categoria") %>' />
-                        <br />
-                        Reservar:
-                        <asp:Label ID="ReservarLabel" runat="server" Text='<%# Bind("Reservar") %>' />
-                        <br />
-                        Tiempo_Reserva:
-                        <asp:Label ID="Tiempo_ReservaLabel" runat="server" Text='<%# Bind("Tiempo_Reserva") %>' />
-                        <br />
-                        <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
-                        &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Eliminar" />
-                        &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Nuevo" />
-                    </ItemTemplate>
-                </asp:FormView>
+
+
 
             </div>
         </div>
