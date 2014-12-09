@@ -1,6 +1,11 @@
 Proyecto de Desarrollo de Aplicaciones Web
 
 Definición de Estados:
+Estado Solicitudes
+0 = Descartada
+1 = Aceptada
+2 = En Proceso
+
 Estados Personas
 0 = Inactivo
 1 = Activo

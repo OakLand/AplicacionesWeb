@@ -19,7 +19,7 @@ SET ANSI_PADDING ON
 GO
 
 CREATE TABLE [dbo].[Area](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Descripcion] [varchar](50) NOT NULL,
  CONSTRAINT [PK_Area] PRIMARY KEY CLUSTERED 
 (
@@ -30,7 +30,7 @@ CREATE TABLE [dbo].[Area](
 GO
 
 CREATE TABLE [dbo].[Boleto](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Id_Persona] [int] NULL,
 	[Id_Area] [int] NOT NULL,
 	[Id_Seccion] [int] NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE [dbo].[Boleto](
 GO
 
 CREATE TABLE [dbo].[Categoria](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Nombre] [varchar](50) NOT NULL,
 	[Categoria_Padre] [int] NULL,
  CONSTRAINT [PK_Categoria] PRIMARY KEY CLUSTERED 
@@ -71,7 +71,7 @@ CREATE TABLE [dbo].[Empresa](
 GO
 
 CREATE TABLE [dbo].[Evento](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Id_Persona] [int] NOT NULL,
 	[Descripcion] [text] NOT NULL,
 	[Ubicacion] [text] NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE [dbo].[Evento](
 GO
 
 CREATE TABLE [dbo].[Imagenes](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Id_Persona] [int] NOT NULL,
 	[Imagen] [image] NOT NULL,
  CONSTRAINT [PK_Imagenes] PRIMARY KEY CLUSTERED 
@@ -101,7 +101,7 @@ CREATE TABLE [dbo].[Imagenes](
 GO
 
 CREATE TABLE [dbo].[Pago_Promotor](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Id_Persona] [int] NOT NULL,
 	[Pago] [decimal](19, 2) NOT NULL,
 	[Fecha] [date] NOT NULL,
@@ -114,7 +114,7 @@ CREATE TABLE [dbo].[Pago_Promotor](
 GO
 
 CREATE TABLE [dbo].[Persona](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Id_User] [int] NULL,
 	[Nombre] [varchar](128) NOT NULL,
 	[Email] [varchar](60) NOT NULL,
@@ -134,7 +134,7 @@ CREATE TABLE [dbo].[Persona](
 GO
 
 CREATE TABLE [dbo].[Usuario](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Id_Persona] [int] NULL,
 	[User] [varchar](50) NOT NULL,
 	[Password] [varchar](50) NOT NULL,
@@ -147,7 +147,7 @@ CREATE TABLE [dbo].[Usuario](
 GO
 
 CREATE TABLE [dbo].[Preguntas](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Categoria] [int] NOT NULL,
 	[Tema] [varchar](50) NOT NULL,
 	[Pregunta] [text] NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE [dbo].[Preguntas](
 GO
 
 CREATE TABLE [dbo].[Seccion](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Descripcion] [varchar](50) NOT NULL,
  CONSTRAINT [PK_Seccion] PRIMARY KEY CLUSTERED 
 (
@@ -172,7 +172,7 @@ CREATE TABLE [dbo].[Seccion](
 GO
 
 CREATE TABLE [dbo].[Solicitud](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Id_Persona] [int] NOT NULL,
 	[Estado] [int] NOT NULL,
 	[Fecha] [date] NOT NULL,
@@ -189,7 +189,7 @@ CREATE TABLE [dbo].[Solicitud](
 GO
 
 CREATE TABLE [dbo].[Solicitud_Categoria](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY (1, 1) NOT NULL,
 	[Id_Persona] [int] NOT NULL,
 	[Categoria] [varchar](50) NOT NULL,
 	[Comentarios] [text] NULL,

@@ -9,20 +9,15 @@ Partial Class Authentication_Register
         If Not Request.Cookies("Tickets")("id") Is Nothing Then
             Response.Redirect("/Default.aspx")
         End If
-        Dim id As Integer = funciones.getId("Persona")
-        Me.IdTextBox.Text = id
     End Sub
 
     Protected Sub Guardar_Click(sender As Object, e As EventArgs) Handles Guardar.Click
-        Dim id_user As Integer = funciones.getId("Usuario")
         Me.image.SaveAs(Server.MapPath(Path.Combine(tempPath, Me.UserTextBox.Text & "_" & Me.image.FileName)))
         Dim foto As String = ""
         If (Not Me.image.HasFile) Then
             Exit Sub
         End If
         foto = Me.tempPath & Me.UserTextBox.Text & "_" & Me.image.FileName
-        Dim id As Integer = CType(Me.IdTextBox.Text, Integer)
-        Dim id_image As Integer = funciones.getId("Imagenes")
         Dim tipo As Integer = CType(Me.Tipo.SelectedValue(), Integer)
         Dim estado As Integer = 1
         If tipo <> 1 Then
@@ -32,11 +27,13 @@ Partial Class Authentication_Register
         Dim email As String = Me.EmailTextBox.Text
         Dim user As String = Me.UserTextBox.Text
         Dim pass As String = funciones.MD5(Me.PassTextBox.Text)
-        Me.funciones.NewUser(id, id_user, nombre, email, id_image, foto, estado, tipo, user, pass)
+        Me.funciones.NewUser(nombre, email, foto, estado, tipo, user, pass)
         Dim vCookie As New HttpCookie("Tickets")
-        vCookie.Values("usuario") = user
-        vCookie.Values("id") = id
-        vCookie.Values("tipo") = tipo
+        If tipo = 1 Then
+            vCookie.Values("usuario") = user
+            vCookie.Values("id") = id
+            vCookie.Values("tipo") = tipo
+        End If
         vCookie.Expires = DateTime.Now.AddDays(1)
         Response.Cookies.Add(vCookie)
         Response.Redirect("/Default.aspx")

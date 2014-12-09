@@ -5,12 +5,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div>
         <br />
-        Id:
-        <asp:TextBox Text='<%# Bind("Id") %>' runat="server" id="IdTextBox" ReadOnly="True" />
         <br />Nombre:
-        <asp:TextBox Text='<%# Bind("Nombre") %>' runat="server" id="NombreTextBox" />
+        <asp:TextBox Text='<%# Bind("Nombre") %>' required="required" runat="server" id="NombreTextBox" />
         <br />Email:
-        <asp:TextBox Text='<%# Bind("Email") %>' runat="server" id="EmailTextBox" />
+        <asp:TextBox Text='<%# Bind("Email") %>' required="required" runat="server" id="EmailTextBox" />
         <br />Fotografia:
         <asp:FileUpload ID="image" runat="server" />
         <br />Tipo:
@@ -20,10 +18,10 @@
         </asp:DropDownList>
         <br />
         Usuario:
-        <asp:TextBox ID="UserTextBox" runat="server"></asp:TextBox>
+        <asp:TextBox ID="UserTextBox" required="required" runat="server"></asp:TextBox>
         <br />
         Contraseña:
-        <asp:TextBox ID="PassTextBox" runat="server"></asp:TextBox>
+        <asp:TextBox ID="PassTextBox" type="password" required="required" runat="server"></asp:TextBox>
         <br />
         <asp:Button ID="Guardar" runat="server" Text="Guardar" />
         <asp:LinkButton ID="Cancelar" runat="server" PostBackUrl="~/Default.aspx">Cancelar</asp:LinkButton>
