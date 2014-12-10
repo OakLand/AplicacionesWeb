@@ -9,17 +9,17 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="/AplicacionesWeb/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" />
     <!-- Optional theme -->
-    <link rel="stylesheet" href="/AplicacionesWeb/assets/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="~/assets/css/bootstrap-theme.min.css" />
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <link href="/AplicacionesWeb/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
     <!-- Latest compiled and minified JavaScript -->
-    <script src="/AplicacionesWeb/assets/js/bootstrap.min.js"></script> 
+    <script src="~/assets/js/bootstrap.min.js"></script> 
 
     <!-- Ocultar Según Login -->
-    <script src="/AplicacionesWeb/assets/js/ocultar.js"></script>
+    <script src="~/assets/js/ocultar.js"></script>
 </head>
 <body>
 
@@ -42,10 +42,10 @@
                 <ul class="nav navbar-nav">
                     
                     <li>
-                        <a href="/AplicacionesWeb/Eventos/Index.aspx">Eventos</a>
+                        <a href="~/Eventos/Index.aspx">Eventos</a>
                     </li>
                     <li class="Promotor">
-                        <a href="/AplicacionesWeb/Promotor/Eventos.aspx">Mis Eventos</a>
+                        <a href="~/Promotor/Eventos.aspx">Mis Eventos</a>
                     </li>
                     <li>
                         <a href="#">Contáctanos</a>
@@ -60,10 +60,10 @@
                         <asp:TextBox ID="myID" style="display:none" Text="id" runat="server"></asp:TextBox>
                     </li>
                     <li class="Desconectado">
-                        <a id="link_login" href="/AplicacionesWeb/Authentication/Login.aspx">Iniciar Sesión</a>
+                        <a id="link_login" href="~/Authentication/Login.aspx">Iniciar Sesión</a>
                     </li>
                     <li class="Desconectado">
-                        <a id="link_register" href="/AplicacionesWeb/Authentication/Register.aspx">Registrar</a>
+                        <a id="link_register" href="~/Authentication/Register.aspx">Registrar</a>
                     </li>
                 </ul>
             </div>
