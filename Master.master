@@ -49,7 +49,7 @@
                         <a href="/Promotor/Eventos.aspx">Mis Eventos</a>
                     </li>
                     <li>
-                        <a href="#">Contáctanos</a>
+                        <a href="/About.aspx">Contáctanos</a>
                     </li>
                     <li class="Conectado">
                         <asp:Label ID="user" runat="server" style="color: white"></asp:Label>
