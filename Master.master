@@ -20,6 +20,7 @@
 
     <!-- Ocultar Según Login -->
     <script src="~/assets/js/ocultar.js"></script>
+    <script src="~/assets/js/script.js"></script>
 </head>
 <body>
 
