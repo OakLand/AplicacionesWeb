@@ -3,28 +3,33 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div>
+    <div class="form-register" role="form">
+        <h2 class="form-signin-heading">
+            Ingrese sus datos para registrarse
+
+        </h2>
+        <asp:TextBox Text='<%# Bind("Id") %>' runat="server" style="display:none;" id="IdTextBox" ReadOnly="True" />
+        <label for="NombreTextBox" class="sr-only">Nombre completo</label>
+        <asp:TextBox Text='<%# Bind("Nombre") %>' class="form-control" runat="server" id="NombreTextBox" autofocus="autofocus" required="required" placeholder="Nombre completo"/>
         <br />
-        Id:
-        <asp:TextBox Text='<%# Bind("Id") %>' runat="server" id="IdTextBox" ReadOnly="True" />
-        <br />Nombre:
-        <asp:TextBox Text='<%# Bind("Nombre") %>' runat="server" id="NombreTextBox" />
-        <br />Email:
-        <asp:TextBox Text='<%# Bind("Email") %>' runat="server" id="EmailTextBox" />
-        <br />Fotografia:
-        <asp:FileUpload ID="image" runat="server" />
-        <br />Tipo:
+        <label for="UserTextBox" class="sr-only">Usuario</label>
+        <asp:TextBox ID="UserTextBox" type="user" class="form-control" runat="server" placeholder="Usuario" required="required"></asp:TextBox>
+        <br />
+        <label for="PassTextBox" class="sr-only">Contraseña</label>
+        <asp:TextBox ID="PassTextBox" type="password" class="form-control" runat="server" placeholder="Contraseña" required="required"></asp:TextBox>
+        <br />
+        <label for="EmailTextBox" class="sr-only">Email</label>
+        <asp:TextBox Text='<%# Bind("Email") %>' class="form-control" runat="server" id="EmailTextBox" placeholder="Email" required="required"/>
+        <br />
+        <label for="image" class="sr-only">Fotografía</label>
+        <asp:FileUpload ID="image" runat="server" />      
+    </div>
+    <div>
         <asp:DropDownList ID="Tipo" runat="server">
             <asp:ListItem Value="1">Comprador</asp:ListItem>
             <asp:ListItem Value="2">Promotor</asp:ListItem>
         </asp:DropDownList>
-        <br />
-        Usuario:
-        <asp:TextBox ID="UserTextBox" runat="server"></asp:TextBox>
-        <br />
-        Contraseña:
-        <asp:TextBox ID="PassTextBox" runat="server"></asp:TextBox>
-        <br />
+        
         <asp:Button ID="Guardar" runat="server" Text="Guardar" />
         <asp:LinkButton ID="Cancelar" runat="server" PostBackUrl="~/Default.aspx">Cancelar</asp:LinkButton>
     </div>
