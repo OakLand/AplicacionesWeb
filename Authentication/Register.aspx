@@ -6,31 +6,58 @@
     <div class="form-register" role="form">
         <h2 class="form-signin-heading">
             Ingrese sus datos para registrarse
-
         </h2>
-        <asp:TextBox Text='<%# Bind("Id") %>' runat="server" style="display:none;" id="IdTextBox" ReadOnly="True" />
-        <label for="NombreTextBox" class="sr-only">Nombre completo</label>
-        <asp:TextBox Text='<%# Bind("Nombre") %>' class="form-control" runat="server" id="NombreTextBox" autofocus="autofocus" required="required" placeholder="Nombre completo"/>
-        <br />
-        <label for="UserTextBox" class="sr-only">Usuario</label>
-        <asp:TextBox ID="UserTextBox" type="user" class="form-control" runat="server" placeholder="Usuario" required="required"></asp:TextBox>
-        <br />
-        <label for="PassTextBox" class="sr-only">Contraseña</label>
-        <asp:TextBox ID="PassTextBox" type="password" class="form-control" runat="server" placeholder="Contraseña" required="required"></asp:TextBox>
-        <br />
-        <label for="EmailTextBox" class="sr-only">Email</label>
-        <asp:TextBox Text='<%# Bind("Email") %>' class="form-control" runat="server" id="EmailTextBox" placeholder="Email" required="required"/>
-        <br />
-        <label for="image" class="sr-only">Fotografía</label>
-        <asp:FileUpload ID="image" runat="server" />      
+        <div class="form-group">
+            <label for="NombreTextBox" class="col-sm-2 control-label">Nombre</label>
+            <div class="col-sm-12">
+                 <asp:TextBox Text='<%# Bind("Nombre") %>' class="form-control" runat="server" id="NombreTextBox" autofocus="autofocus" required="required" placeholder="Nombre completo"/>
+            </div>
+   
+        </div>
+        <div class="form-group">
+            <label for="UserTextBox" class="col-sm-2 control-label">Usuario</label>
+            <div class="col-sm-12">
+                 <asp:TextBox ID="UserTextBox" type="user" class="form-control" runat="server" placeholder="Usuario" required="required"></asp:TextBox>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="PassTextBox" class="col-sm-2 control-label">Contraseña</label>
+            <div class="col-sm-12">
+                 <asp:TextBox ID="PassTextBox" type="password" class="form-control" runat="server" placeholder="Contraseña" required="required"></asp:TextBox>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmailTextBox" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-12">
+                 <asp:TextBox Text='<%# Bind("Email") %>' class="form-control" runat="server" id="EmailTextBox" placeholder="Email" required="required"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="image" class="col-sm-2 control-label">Fotografía</label>
+            <div class="col-sm-12">
+                 <asp:FileUpload ID="image" runat="server" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="image" class="col-sm-6 control-label">Tipo de usuario</label>
+            <div class="col-sm-12">
+                 <asp:DropDownList ID="Tipo" CssClass="form-control" runat="server">
+                    <asp:ListItem Value="1">Comprador</asp:ListItem>
+                    <asp:ListItem Value="2">Promotor</asp:ListItem>
+                </asp:DropDownList> 
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">          
+            <asp:Button ID="Guardar" runat="server" style="margin-top: 10px;" CssClass="btn-default btn btn-primary"  Text="Guardar" />
+            <asp:LinkButton ID="Cancelar" style="margin-top: 10px;" runat="server" PostBackUrl="~/Default.aspx">Cancelar</asp:LinkButton>
+            </div>
+        </div>
+        
     </div>
     <div>
-        <asp:DropDownList ID="Tipo" runat="server">
-            <asp:ListItem Value="1">Comprador</asp:ListItem>
-            <asp:ListItem Value="2">Promotor</asp:ListItem>
-        </asp:DropDownList>
-        <asp:Button ID="Guardar" runat="server" Text="Guardar" />
-        <asp:LinkButton ID="Cancelar" runat="server" PostBackUrl="~/Default.aspx">Cancelar</asp:LinkButton>
+        
+        
     </div>
     <br />
     <asp:SqlDataSource ID="sqlPersona" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DataBase %>" DeleteCommand="DELETE FROM [Persona] WHERE [Id] = @original_Id AND [Nombre] = @original_Nombre AND [Email] = @original_Email AND [Fotografia] = @original_Fotografia AND [Estado] = @original_Estado AND [Tipo] = @original_Tipo" InsertCommand="INSERT INTO [Persona] ([Id], [Nombre], [Email], [Fotografia], [Estado], [Tipo]) VALUES (@Id, @Nombre, @Email, @Fotografia, @Estado, @Tipo)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Persona]" UpdateCommand="UPDATE [Persona] SET [Nombre] = @Nombre, [Email] = @Email, [Fotografia] = @Fotografia, [Estado] = @Estado, [Tipo] = @Tipo WHERE [Id] = @original_Id AND [Nombre] = @original_Nombre AND [Email] = @original_Email AND [Fotografia] = @original_Fotografia AND [Estado] = @original_Estado AND [Tipo] = @original_Tipo">
