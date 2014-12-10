@@ -10,14 +10,15 @@ Partial Class Promotor_NuevoEvento
     End Sub
 
     Protected Sub Insert_Click(sender As Object, e As EventArgs) Handles Insert.Click
-        Dim id As Integer = funciones.getId("Evento")
         Dim id_Persona As Integer = Request.Cookies("Tickets")("id")
         Dim descripcion As String = Me.DescripcionTextBox.Text
         Dim ubicacion As String = Me.UbicacionTextBox.Text
         Dim fecha As String = Me.FechaTextBox.Text
         Dim hora As String = Me.HoraTextBox.Text
         Dim categoria As Integer = Me.CategoriaTextBox.SelectedValue
-        Dim reservar As String = Me.ReservarTextBox.Text
+        Dim reservar As Integer = Me.ReservarTextBox.SelectedValue
+        Dim tiempo_reserva As Integer = CType(Me.Tiempo_ReservaTextBox.Text, Integer)
+        funciones.NewEvento(id_Persona, descripcion, ubicacion, fecha, hora, categoria, reservar, Tiempo_Reserva)
     End Sub
 
     Protected Sub ReservarTextBox_SelectedIndexChanged1(sender As Object, e As EventArgs) Handles ReservarTextBox.SelectedIndexChanged

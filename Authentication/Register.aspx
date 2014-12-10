@@ -29,7 +29,6 @@
             <asp:ListItem Value="1">Comprador</asp:ListItem>
             <asp:ListItem Value="2">Promotor</asp:ListItem>
         </asp:DropDownList>
-        
         <asp:Button ID="Guardar" runat="server" Text="Guardar" />
         <asp:LinkButton ID="Cancelar" runat="server" PostBackUrl="~/Default.aspx">Cancelar</asp:LinkButton>
     </div>

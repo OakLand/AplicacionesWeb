@@ -57,22 +57,44 @@ Public Class Funciones
         Return Nothing
     End Function
 
-    Public Sub NewUser(ByVal id As Integer, ByVal id_user As Integer, ByVal nombre As String, ByVal email As String, ByVal id_imagen As Integer, ByVal imagen As String, ByVal estado As Integer, ByVal tipo As Integer, ByVal user As String, ByVal pass As String)
+    Public Sub NewUser(ByVal nombre As String, ByVal email As String, ByVal imagen As String, ByVal estado As Integer, ByVal tipo As Integer, ByVal user As String, ByVal pass As String)
         Try
             Conectado()
             cmd = New SqlCommand("NewUser")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = cnn
-            cmd.Parameters.AddWithValue("@id", id)
-            cmd.Parameters.AddWithValue("@id_user", id_user)
             cmd.Parameters.AddWithValue("@nombre", nombre)
             cmd.Parameters.AddWithValue("@email", email)
-            cmd.Parameters.AddWithValue("@id_imagen", id_imagen)
             cmd.Parameters.AddWithValue("@foto", imagen)
             cmd.Parameters.AddWithValue("@estado", estado)
             cmd.Parameters.AddWithValue("@tipo", tipo)
             cmd.Parameters.AddWithValue("@user", user)
             cmd.Parameters.AddWithValue("@pass", pass)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+        Catch ex As Exception
+            MsgBox("Error al Crear Usuario: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+    End Sub
+
+    Public Sub NewEvento(ByVal Id_Persona As Integer, ByVal Descripcion As String, ByVal Ubicacion As String, ByVal fecha As String, ByVal Hora As String, ByVal Categoria As Integer, ByVal Reservar As Integer, ByVal Tiempo_Reserva As Integer)
+        Try
+            Conectado()
+            cmd = New SqlCommand("NewEvento")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+
+            cmd.Parameters.AddWithValue("@id_persona", Id_Persona)
+            cmd.Parameters.AddWithValue("@descripcion", Descripcion)
+            cmd.Parameters.AddWithValue("@ubicacion", Ubicacion)
+            cmd.Parameters.AddWithValue("@fecha", fecha)
+            cmd.Parameters.AddWithValue("@hora", Hora)
+            cmd.Parameters.AddWithValue("@categoria", Categoria)
+            cmd.Parameters.AddWithValue("@reservar", Reservar)
+            cmd.Parameters.AddWithValue("@tiempo_reserva", Tiempo_Reserva)
 
             Dim dr As SqlDataReader
             dr = cmd.ExecuteReader
