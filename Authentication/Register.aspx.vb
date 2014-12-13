@@ -3,7 +3,7 @@
 Partial Class Authentication_Register
     Inherits System.Web.UI.Page
     Private funciones As New Funciones()
-    Private tempPath As String = "~/temp/"
+    Private tempPath As String = "~/assets/images/usuarios/"
 
     Protected Sub Register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Not Request.Cookies("Tickets")("id") Is Nothing Then

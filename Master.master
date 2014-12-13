@@ -51,6 +51,9 @@
                     <li class="Promotor">
                         <a href="/Promotor/Eventos.aspx">Mis Eventos</a>
                     </li>
+                    <li>
+                        <a href="/About.aspx">Contáctanos</a>
+
                     <li class="Admin">
                         <a href="/Admin/Solicitudes.aspx">Solicitudes Usuario</a>
                     </li>
