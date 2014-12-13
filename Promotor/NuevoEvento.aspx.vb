@@ -19,10 +19,13 @@ Partial Class Promotor_NuevoEvento
         Dim reservar As Integer = Me.ReservarTextBox.SelectedValue
         Dim tiempo_reserva As Integer = CType(Me.Tiempo_ReservaTextBox.Text, Integer)
         funciones.NewEvento(id_Persona, descripcion, ubicacion, fecha, hora, categoria, reservar, tiempo_reserva)
+        Dim vCookie As HttpCookie = Request.Cookies("Tickets")
+        vCookie.Values("evento") = funciones.getEventoID()
+        Response.Cookies.Add(vCookie)
         Response.Redirect("/Promotor/CrearBoletos.aspx")
     End Sub
 
-    Protected Sub ReservarTextBox_SelectedIndexChanged1(sender As Object, e As EventArgs) Handles ReservarTextBox.SelectedIndexChanged
+    Protected Sub ReservarTextBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ReservarTextBox.SelectedIndexChanged
         If Me.ReservarTextBox.SelectedValue = 1 Then
             Me.Tiempo_ReservaTextBox.Enabled = True
         Else

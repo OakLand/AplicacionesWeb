@@ -12,7 +12,7 @@
         <asp:TextBox ID="CategoriaTextBox" runat="server" />
         <br />
         Comentarios:
-        <asp:TextBox ID="ComentariosTextBox" runat="server" Height="54px" Width="126px" />
+        <asp:TextBox ID="ComentariosTextBox" runat="server" Height="54px" Width="126px" TextMode="MultiLine" />
         <br />
         <br />
         <asp:Button ID="btnEnviar" runat="server" Text="Enviar" />

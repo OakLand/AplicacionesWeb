@@ -19,7 +19,6 @@ Partial Class Authentication_Login
             Response.Cookies.Add(vCookie)
             Response.Redirect("/Default.aspx")
         Else
-            InputBox("", "", funciones.MD5(Me.inputPassword.Text))
             Me.inputPassword.Text = ""
             Me.inputPassword.Focus()
         End If

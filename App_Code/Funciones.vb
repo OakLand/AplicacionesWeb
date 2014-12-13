@@ -214,4 +214,45 @@ Public Class Funciones
             Desconectado()
         End Try
     End Sub
+
+    Public Function getEventoID() As Integer
+        Try
+            Conectado()
+            cmd = New SqlCommand("getEventoId")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+            If dr.HasRows = True Then
+                For Each item As System.Data.Common.DbDataRecord In dr
+                    Return item.GetInt32(0)
+                Next
+            End If
+        Catch ex As Exception
+            MsgBox("Error al obtener el ID: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+        Return 0
+    End Function
+
+    Public Sub nuevaArea_Seccion(ByVal descripcion As String, ByVal tabla As String)
+        Try
+            Conectado()
+            cmd = New SqlCommand("nuevaArea_Seccion")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+
+            cmd.Parameters.AddWithValue("@descripcion", descripcion)
+            cmd.Parameters.AddWithValue("@tabla", tabla)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+        Catch ex As Exception
+            MsgBox("Error al Crear el Area/Seccion: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+    End Sub
 End Class

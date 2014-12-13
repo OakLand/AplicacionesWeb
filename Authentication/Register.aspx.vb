@@ -12,13 +12,15 @@ Partial Class Authentication_Register
     End Sub
 
     Protected Sub Guardar_Click(sender As Object, e As EventArgs) Handles Guardar.Click
-        Me.image.SaveAs(Server.MapPath(Path.Combine(tempPath, Me.UserTextBox.Text & "_" & Me.image.FileName)))
         Dim foto As String = ""
-        If (Not Me.image.HasFile) Then
+        Dim tipo As Integer = CType(Me.Tipo.SelectedValue(), Integer)
+        If (Not Me.image.HasFile And tipo <> 2) Then
             Exit Sub
         End If
-        foto = Me.tempPath & Me.UserTextBox.Text & "_" & Me.image.FileName
-        Dim tipo As Integer = CType(Me.Tipo.SelectedValue(), Integer)
+        If Me.image.HasFile Then
+            Me.image.SaveAs(Server.MapPath(Path.Combine(tempPath, Me.UserTextBox.Text & "_" & Me.image.FileName)))
+            foto = Me.tempPath & Me.UserTextBox.Text & "_" & Me.image.FileName
+        End If
         Dim estado As Integer = 1
         If tipo <> 1 Then
             estado = 2
@@ -31,7 +33,7 @@ Partial Class Authentication_Register
         Dim vCookie As New HttpCookie("Tickets")
         If tipo = 1 Then
             vCookie.Values("usuario") = user
-            vCookie.Values("id") = id
+            vCookie.Values("id") = ID
             vCookie.Values("tipo") = tipo
         End If
         vCookie.Expires = DateTime.Now.AddDays(1)

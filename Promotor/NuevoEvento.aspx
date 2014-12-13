@@ -29,7 +29,7 @@
             <div id="Formulario">
                         <div class="new">
                             Descripcion:
-                            <asp:TextBox ID="DescripcionTextBox" runat="server" Height="45px" Width="162px" required="required" />
+                            <asp:TextBox ID="DescripcionTextBox" runat="server" Height="45px" Width="162px" required="required" TextMode="MultiLine" />
                             <br />
                             <br />
                             Fecha:
@@ -51,11 +51,11 @@
                         </div>
                         <div class="new" style="float: right">
                             Ubicacion:
-                            <asp:TextBox ID="UbicacionTextBox" runat="server" Height="45px"  Width="155px" required="required" />
+                            <asp:TextBox ID="UbicacionTextBox" runat="server" Height="45px"  Width="155px" required="required" TextMode="MultiLine" />
                             <br />
                             <br />
                             Hora:
-                            <asp:TextBox ID="HoraTextBox" runat="server" required="required" />
+                            <asp:TextBox ID="HoraTextBox" runat="server" required="required" TextMode="Time" />
                             <br />
                             <br />
                             Días de Reserva:
