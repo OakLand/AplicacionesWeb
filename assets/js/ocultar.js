@@ -15,6 +15,10 @@
     for (var val = 0; val < noVisibles.length; val++) {
         noVisibles[val].style.display = 'none';
     }
+    noVisibles = document.getElementsByClassName("Admin");
+    for (var val = 0; val < noVisibles.length; val++) {
+        noVisibles[val].style.display = 'none';
+    }
     noVisibles = document.getElementsByClassName("Desconectado");
     for (var val = 0; val < noVisibles.length; val++) {
         noVisibles[val].style.display = 'none';
@@ -32,6 +36,12 @@
             visibles[val].style.removeProperty('display');
         }
         visibles = document.getElementsByClassName("Promotor");
+    } else if (elemento.value == "3") {
+        visibles = document.getElementsByClassName("Conectado");
+        for (var val = 0; val < visibles.length; val++) {
+            visibles[val].style.removeProperty('display');
+        }
+        visibles = document.getElementsByClassName("Admin");
     } else {
         visibles = document.getElementsByClassName("Desconectado");
     }
