@@ -174,4 +174,44 @@ Public Class Funciones
         End Try
         Return id
     End Function
+
+    Public Sub cambioSolicitud(ByVal Id As Integer, ByVal Estado As Integer, ByVal Procedimiento As String)
+        Try
+            Conectado()
+            cmd = New SqlCommand(Procedimiento)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+
+            cmd.Parameters.AddWithValue("@id", Id)
+            cmd.Parameters.AddWithValue("@estado", Estado)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+        Catch ex As Exception
+            MsgBox("Error al cambiar Estado: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+    End Sub
+
+    Public Sub nuevaSolicitudCategoria(ByVal id_persona As Integer, ByVal categoria As String, ByVal comentarios As String)
+        Try
+            Conectado()
+            cmd = New SqlCommand("NewSolicitudCategoria")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+
+            cmd.Parameters.AddWithValue("@id_persona", id_persona)
+            cmd.Parameters.AddWithValue("@categoria", categoria)
+            cmd.Parameters.AddWithValue("@comentarios", comentarios)
+            cmd.Parameters.AddWithValue("@estado", 2)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+        Catch ex As Exception
+            MsgBox("Error al Crear la Solicitud: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+    End Sub
 End Class

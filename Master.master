@@ -45,11 +45,17 @@
                     <li>
                         <a href="/Eventos/Index.aspx">Eventos</a>
                     </li>
+                    <li>
+                        <a href="#">Contáctanos</a>
+                    </li>
                     <li class="Promotor">
                         <a href="/Promotor/Eventos.aspx">Mis Eventos</a>
                     </li>
-                    <li>
-                        <a href="#">Contáctanos</a>
+                    <li class="Admin">
+                        <a href="/Admin/Solicitudes.aspx">Solicitudes Usuario</a>
+                    </li>
+                    <li class="Admin">
+                        <a href="/Admin/SolicitudesCategorias.aspx">Solicitudes Categorías</a>
                     </li>
                     <li class="Conectado">
                         <asp:Label ID="user" runat="server" style="color: white"></asp:Label>

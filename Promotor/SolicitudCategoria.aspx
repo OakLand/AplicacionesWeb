@@ -8,22 +8,16 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <div id="formSolicitud" >
-        Id:
-        <asp:TextBox ID="IdTextBox" runat="server" />
-        <br />
-        Id_Persona:
-        <asp:TextBox ID="Id_PersonaTextBox" runat="server" />
-        <br />
         Categoria:
         <asp:TextBox ID="CategoriaTextBox" runat="server" />
         <br />
         Comentarios:
-        <asp:TextBox ID="ComentariosTextBox" runat="server" />
+        <asp:TextBox ID="ComentariosTextBox" runat="server" Height="54px" Width="126px" />
         <br />
-        fecha:
-        <asp:TextBox ID="fechaTextBox" runat="server" />
-        <asp:CalendarExtender ID="fechaTextBox_CalendarExtender" runat="server" Enabled="True" TargetControlID="fechaTextBox">
-        </asp:CalendarExtender>
+        <br />
+        <asp:Button ID="btnEnviar" runat="server" Text="Enviar" />
+&nbsp;&nbsp;
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
         <br />
     </div>
     <br />
