@@ -11,7 +11,7 @@
             <div id="eventos">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sqlEventos" Width="100%" AllowPaging="True" AllowSorting="True">
                     <Columns>
-                        <asp:CommandField ShowEditButton="True" />
+                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" />
                         <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" InsertVisible="False" />
                         <asp:BoundField DataField="Persona" HeaderText="Persona" SortExpression="Persona" />
                         <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
@@ -44,7 +44,10 @@
         <asp:Button ID="soliCat" runat="server" Text="Solicitar Categoría" />
     </div>
 <br />
-<asp:SqlDataSource ID="sqlEventos" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DataBase %>" DeleteCommand="DELETE FROM [Evento] WHERE [Id] = @original_Id AND [Id_Persona] = @original_Id_Persona AND [Descripcion] = @original_Descripcion AND [Ubicacion] = @original_Ubicacion AND [Fecha] = @original_Fecha AND [Hora] = @original_Hora AND [Categoria] = @original_Categoria AND [Reservar] = @original_Reservar AND (([Tiempo_Reserva] = @original_Tiempo_Reserva) OR ([Tiempo_Reserva] IS NULL AND @original_Tiempo_Reserva IS NULL))" InsertCommand="INSERT INTO [Evento] ([Id], [Id_Persona], [Descripcion], [Ubicacion], [Fecha], [Hora], [Categoria], [Reservar], [Tiempo_Reserva]) VALUES (@Id, @Id_Persona, @Descripcion, @Ubicacion, @Fecha, @Hora, @Categoria, @Reservar, @Tiempo_Reserva)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT E.Id, P.Nombre AS Persona, E.Descripcion, E.Ubicacion, E.Fecha, E.Hora, C.Nombre AS Categoria, E.Reservar, E.Tiempo_Reserva FROM Evento AS E INNER JOIN Categoria AS C ON E.Categoria = C.Id INNER JOIN Persona AS P ON E.Id_Persona = P.Id" UpdateCommand="UPDATE [Evento] SET [Descripcion] = @Descripcion, [Ubicacion] = @Ubicacion, [Fecha] = @Fecha, [Hora] = @Hora, [Categoria] = (Select Id from Categoria where Nombre = @Categoria), [Reservar] = @Reservar, [Tiempo_Reserva] = @Tiempo_Reserva WHERE [Id] = @original_Id">
+<asp:SqlDataSource ID="sqlEventos" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DataBase %>" DeleteCommand="DELETE FROM [Evento] WHERE [Id] = @original_Id AND [Id_Persona] = @original_Id_Persona AND [Descripcion] = @original_Descripcion AND [Ubicacion] = @original_Ubicacion AND [Fecha] = @original_Fecha AND [Hora] = @original_Hora AND [Categoria] = @original_Categoria AND [Reservar] = @original_Reservar AND (([Tiempo_Reserva] = @original_Tiempo_Reserva) OR ([Tiempo_Reserva] IS NULL AND @original_Tiempo_Reserva IS NULL))" InsertCommand="INSERT INTO [Evento] ([Id], [Id_Persona], [Descripcion], [Ubicacion], [Fecha], [Hora], [Categoria], [Reservar], [Tiempo_Reserva]) VALUES (@Id, @Id_Persona, @Descripcion, @Ubicacion, @Fecha, @Hora, @Categoria, @Reservar, @Tiempo_Reserva)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT E.Id, P.Nombre AS Persona, E.Descripcion, E.Ubicacion, E.Fecha, E.Hora, C.Nombre AS Categoria, E.Reservar, E.Tiempo_Reserva FROM Evento AS E INNER JOIN Categoria AS C ON E.Categoria = C.Id INNER JOIN Persona AS P ON E.Id_Persona = P.Id WHERE ([Id_Persona] = @Id_Persona)" UpdateCommand="UPDATE [Evento] SET [Descripcion] = @Descripcion, [Ubicacion] = @Ubicacion, [Fecha] = @Fecha, [Hora] = @Hora, [Categoria] = (Select Id from Categoria where Nombre = @Categoria), [Reservar] = @Reservar, [Tiempo_Reserva] = @Tiempo_Reserva WHERE [Id] = @original_Id">
+    <SelectParameters>
+        <asp:CookieParameter CookieName="Usuario" DefaultValue="" Name="Id_Persona" Type="Int32" />
+    </SelectParameters>
     <DeleteParameters>
         <asp:Parameter Name="original_Id" Type="Int32" />
         <asp:Parameter Name="original_Id_Persona" Type="Int32" />

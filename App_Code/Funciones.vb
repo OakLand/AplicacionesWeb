@@ -282,4 +282,99 @@ Public Class Funciones
             Desconectado()
         End Try
     End Sub
+
+    Public Function GetEvento(ByVal Id As Integer) As ArrayList
+        Dim evento As New ArrayList
+        Try
+            Conectado()
+            cmd = New SqlCommand("GetEvento")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.Parameters.AddWithValue("@id", Id)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+            If dr.HasRows = True Then
+                For Each item As System.Data.Common.DbDataRecord In dr
+                    evento.Add(item.GetInt32(0))
+                    evento.Add(item.GetInt32(1))
+                    evento.Add(item.GetString(2))
+                    evento.Add(item.GetString(3))
+                    evento.Add(item.GetString(4))
+                    evento.Add(item.GetDateTime(5))
+                    evento.Add(item.GetString(6))
+                    evento.Add(item.GetInt32(7))
+                    evento.Add(item.GetInt32(8))
+                    If Not IsNothing(item(9)) Then
+                        evento.Add(item.GetInt32(9))
+                    Else
+                        evento.Add(0)
+                    End If
+                    If Not IsNothing(item(10)) Then
+                        evento.Add(item.GetInt32(10))
+                    Else
+                        evento.Add(0)
+                    End If
+                Next
+            End If
+            'Catch ex As Exception
+            '    MsgBox("Error al Obtener Evento: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+        Return evento
+    End Function
+
+    Public Sub UpdateEvento(ByVal Id As Integer, ByVal Id_Persona As Integer, ByVal Nombre As String, ByVal Descripcion As String, ByVal Ubicacion As String, ByVal fecha As String, ByVal Hora As String, ByVal Categoria As Integer, ByVal Reservar As Integer, ByVal Tiempo_Reserva As Integer, ByVal Imagen As String)
+        Try
+            Conectado()
+            cmd = New SqlCommand("UpdateEvento")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+
+            cmd.Parameters.AddWithValue("@id", Id)
+            cmd.Parameters.AddWithValue("@id_persona", Id_Persona)
+            cmd.Parameters.AddWithValue("@nombre", Nombre)
+            cmd.Parameters.AddWithValue("@descripcion", Descripcion)
+            cmd.Parameters.AddWithValue("@ubicacion", Ubicacion)
+            cmd.Parameters.AddWithValue("@fecha", fecha)
+            cmd.Parameters.AddWithValue("@hora", Hora)
+            cmd.Parameters.AddWithValue("@categoria", Categoria)
+            cmd.Parameters.AddWithValue("@reservar", Reservar)
+            cmd.Parameters.AddWithValue("@tiempo_reserva", Tiempo_Reserva)
+            cmd.Parameters.AddWithValue("@imagen", Imagen)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+        Catch ex As Exception
+            MsgBox("Error al Crear Usuario: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+    End Sub
+
+    Public Function GetImage(ByVal Id As Integer) As String
+        Try
+            Conectado()
+            cmd = New SqlCommand("GetImagen")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.Parameters.AddWithValue("@id", Id)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+            If dr.HasRows = True Then
+                For Each item As System.Data.Common.DbDataRecord In dr
+                    Return item.GetString(0)
+                Next
+            End If
+        Catch ex As Exception
+            MsgBox("Error al Crear Usuario: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+        Return ""
+    End Function
+
+
 End Class
