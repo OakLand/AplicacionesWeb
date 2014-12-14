@@ -6,23 +6,21 @@
     <div style="text-align: center">
         <asp:ListView ID="ListView1" runat="server" DataSourceID="sqlEventos" GroupItemCount="2">
             <AlternatingItemTemplate>
-                <td runat="server" style="text-align:center; background-color: #FAFAD2;color: #284775;">Promotor:
-                    <asp:Label ID="PromotorLabel" runat="server" Text='<%# Eval("Promotor") %>' />
-                    <br />Descripcion:
-                    <asp:Label ID="DescripcionLabel" runat="server" Text='<%# Eval("Descripcion") %>' />
-                    <br />Ubicacion:
-                    <asp:Label ID="UbicacionLabel" runat="server" Text='<%# Eval("Ubicacion") %>' />
-                    <br />Fecha:
-                    <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                    <br />Hora:
-                    <asp:Label ID="HoraLabel" runat="server" Text='<%# Eval("Hora") %>' />
-                    <br />Categoría:
-                    <asp:Label ID="CategoríaLabel" runat="server" Text='<%# Eval("Categoría") %>' />
-                    <br />Reservar:
-                    <asp:Label ID="ReservarLabel" runat="server" Text='<%# Eval("Reservar") %>' />
-                    <br />Tiempo_Reserva:
-                    <asp:Label ID="Tiempo_ReservaLabel" runat="server" Text='<%# Eval("Tiempo_Reserva") %>' />
-                    <br /></td>
+                <div id="Div1" runat="server" class="col-md-3 col-sm-6 hero-feature">
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/800x500" alt="">
+                        <div class="caption">
+                            <h3>Titulo 2</h3>
+                            <p><%# Eval("Descripcion") %></p>
+                            <p><%# Eval("Ubicacion") %></p>
+                            <p><%# Eval("Fecha") %></p>
+                            <p><%# Eval("Hora") %></p>
+                            <p>
+                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">Más información</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </AlternatingItemTemplate>
             <EditItemTemplate>
                 <td runat="server" style="background-color: #FFCC66;color: #000080;">Promotor:
@@ -86,46 +84,34 @@
                     <br /></td>
             </InsertItemTemplate>
             <ItemTemplate>
-                <td runat="server" style="background-color: #FFFBD6;color: #333333;">Promotor:
-                    <asp:Label ID="PromotorLabel" runat="server" Text='<%# Eval("Promotor") %>' />
-                    <br />Descripcion:
-                    <asp:Label ID="DescripcionLabel" runat="server" Text='<%# Eval("Descripcion") %>' />
-                    <br />Ubicacion:
-                    <asp:Label ID="UbicacionLabel" runat="server" Text='<%# Eval("Ubicacion") %>' />
-                    <br />Fecha:
-                    <asp:Label ID="FechaLabel" runat="server" Text='<%# Eval("Fecha") %>' />
-                    <br />Hora:
-                    <asp:Label ID="HoraLabel" runat="server" Text='<%# Eval("Hora") %>' />
-                    <br />Categoría:
-                    <asp:Label ID="CategoríaLabel" runat="server" Text='<%# Eval("Categoría") %>' />
-                    <br />Reservar:
-                    <asp:Label ID="ReservarLabel" runat="server" Text='<%# Eval("Reservar") %>' />
-                    <br />Tiempo_Reserva:
-                    <asp:Label ID="Tiempo_ReservaLabel" runat="server" Text='<%# Eval("Tiempo_Reserva") %>' />
-                    <br /></td>
+                <div runat="server" class="col-md-3 col-sm-6 hero-feature">
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/800x500" alt="">
+                        <div class="caption">
+                            <h3>Titulo</h3>
+                            <p><%# Eval("Descripcion") %></p>
+                            <p><%# Eval("Ubicacion") %></p>
+                            <p><%# Eval("Fecha") %></p>
+                            <p><%# Eval("Hora") %></p>
+                            <p>
+                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">Más información</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server" style="width: 90%; text-align:center;">
-                    <tr runat="server" style="width:50%; text-align: center;">
-                        <td runat="server">
-                            <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                <tr id="groupPlaceholder" runat="server">
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr runat="server">
-                        <td runat="server" style="text-align: center;background-color: #FFCC66;font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333;">
-                            <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
-                                <Fields>
-                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                    <asp:NumericPagerField />
-                                    <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
-                                </Fields>
-                            </asp:DataPager>
-                        </td>
-                    </tr>
-                </table>
+                <div class="row text-center" id="groupPlaceholderContainer" runat="server">
+                    <div id="groupPlaceholder" runat="server"></div>
+                </div> 
+                
+                <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
+                    <Fields>
+                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                        <asp:NumericPagerField />
+                        <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                    </Fields>
+                </asp:DataPager>
             </LayoutTemplate>
             <SelectedItemTemplate>
                 <td runat="server" style="background-color: #FFCC66;font-weight: bold;color: #000080;">Promotor:
