@@ -317,8 +317,8 @@ Public Class Funciones
                     End If
                 Next
             End If
-            'Catch ex As Exception
-            '    MsgBox("Error al Obtener Evento: " & ex.Message)
+        Catch ex As Exception
+            MsgBox("Error al Obtener Evento: " & ex.Message)
         Finally
             Desconectado()
         End Try
@@ -347,7 +347,7 @@ Public Class Funciones
             Dim dr As SqlDataReader
             dr = cmd.ExecuteReader
         Catch ex As Exception
-            MsgBox("Error al Crear Usuario: " & ex.Message)
+            MsgBox("Error al Actualizar Evento: " & ex.Message)
         Finally
             Desconectado()
         End Try
@@ -369,12 +369,33 @@ Public Class Funciones
                 Next
             End If
         Catch ex As Exception
-            MsgBox("Error al Crear Usuario: " & ex.Message)
+            MsgBox("Error al Obtener Imagen: " & ex.Message)
         Finally
             Desconectado()
         End Try
         Return ""
     End Function
 
+    Public Function ComprarBoleto(ByVal persona As Integer, ByVal evento As Integer, ByVal area As String, ByVal seccion As String, ByVal fila As Integer) As Boolean
+        Try
+            Conectado()
+            cmd = New SqlCommand("ComprarBoleto")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.Parameters.AddWithValue("@id_persona", persona)
+            cmd.Parameters.AddWithValue("@evento", evento)
+            cmd.Parameters.AddWithValue("@area", area)
+            cmd.Parameters.AddWithValue("@seccion", seccion)
+            cmd.Parameters.AddWithValue("@fila", fila)
 
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+            Return dr.HasRows
+        Catch ex As Exception
+            MsgBox("Error al Comprar Boleto: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+        Return False
+    End Function
 End Class

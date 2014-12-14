@@ -105,9 +105,32 @@
             <br />
         </ItemTemplate>
     </asp:FormView>
+    <br />
+    <div>
+        <asp:GridView ID="gridBoletos" runat="server" AutoGenerateColumns="False" DataSourceID="sqlBoletos">
+            <Columns>
+                <asp:CommandField SelectText="Comprar" ShowSelectButton="True" />
+                <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
+                <asp:BoundField DataField="Seccion" HeaderText="Seccion" SortExpression="Seccion" />
+                <asp:BoundField DataField="Fila" HeaderText="Fila" SortExpression="Fila" />
+                <asp:BoundField DataField="Costo" HeaderText="Costo" SortExpression="Costo" />
+                <asp:BoundField DataField="Disponibles" HeaderText="Cantidad" SortExpression="Disponibles" />
+            </Columns>
+            <EmptyDataTemplate>
+                No Hay Boletos Disponibles
+            </EmptyDataTemplate>
+
+        </asp:GridView>
+        <br />
+    </div>
     <asp:SqlDataSource ID="sqlEvento" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT p.Nombre AS Promotor, e.Nombre AS Evento, e.Descripcion, e.Ubicacion, e.Fecha, e.Hora, c.Nombre AS Categoria, e.Reservar, e.Tiempo_Reserva AS [Dias de Reserva], i.Imagen FROM Evento AS e INNER JOIN Categoria AS c ON e.Categoria = c.Id INNER JOIN Imagenes AS i ON e.Id = i.Id INNER JOIN Persona AS p ON e.Id_Persona = p.Id WHERE (e.Id = @Id)">
         <SelectParameters>
             <asp:CookieParameter CookieName="event" DefaultValue="" Name="Id" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="sqlBoletos" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT DISTINCT a.Descripcion AS Area, s.Descripcion AS Seccion, b.Fila, b.Costo, COUNT('b.*') AS Disponibles FROM Boleto AS b INNER JOIN Area AS a ON b.Id_Area = a.Id INNER JOIN Seccion AS s ON b.Id_Seccion = s.Id WHERE (b.Id_Evento = @evento) GROUP BY a.Descripcion, s.Descripcion, b.Fila, b.Costo, b.Tipo HAVING (b.Tipo = 1)">
+        <SelectParameters>
+            <asp:CookieParameter CookieName="event" Name="evento" />
         </SelectParameters>
     </asp:SqlDataSource>
     <br />
