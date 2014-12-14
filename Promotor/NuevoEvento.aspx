@@ -28,6 +28,10 @@
         <div id="contenido">
             <div id="Formulario">
                         <div class="new">
+                            Nombre:
+                            <asp:TextBox ID="NombreTextBox" required="required" runat="server"></asp:TextBox>
+                            <br />
+                            <br />
                             Descripcion:
                             <asp:TextBox ID="DescripcionTextBox" runat="server" Height="45px" Width="162px" required="required" TextMode="MultiLine" />
                             <br />
@@ -45,11 +49,17 @@
                             </asp:DropDownList>
                             <br />
                             <br />
+                            <div style="float:right">
+                                <asp:Button ID="Insert" runat="server" Text="Crear" />
+                                &nbsp;&nbsp;
+                                <asp:linkButton ID="Cancel" runat="server" Text="Cancelar" PostBackUrl="~/Promotor/Eventos.aspx" />
+                            </div>
+                        </div>
+                        <div class="new" style="float: right">
                             Categoria:
                             <asp:DropDownList ID="CategoriaTextBox" runat="server" DataSourceID="sqlCategoria" DataTextField="Nombre" DataValueField="Id" required="required" Height="22px" Width="115px">
                             </asp:DropDownList>
-                        </div>
-                        <div class="new" style="float: right">
+                            <br /><br />
                             Ubicacion:
                             <asp:TextBox ID="UbicacionTextBox" runat="server" Height="45px"  Width="155px" required="required" TextMode="MultiLine" />
                             <br />
@@ -65,11 +75,7 @@
                             <br />
                             <br />
                             <br />
-                            <div style="float:right">
-                                <asp:Button ID="Insert" runat="server" Text="Crear" />
-                                &nbsp;&nbsp;
-                                <asp:linkButton ID="Cancel" runat="server" Text="Cancelar" PostBackUrl="~/Promotor/Eventos.aspx" />
-                            </div>
+                            <asp:FileUpload ID="fileImage" runat="server" />
                         </div>
 
 

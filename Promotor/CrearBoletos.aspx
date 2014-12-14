@@ -18,15 +18,13 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="seccionPlus" runat="server" Text="+" OnClick="seccionPlus_Click" UseSubmitBehavior="False" />
         <br />Fila:
-        <asp:TextBox ID="FilaTextBox" runat="server" required="required" />
+        <asp:TextBox ID="FilaTextBox" runat="server" required="required" TextMode="Number" />
         <br />No_Asiento: De
         <asp:TextBox ID="noAsientoDe" runat="server" required="required" Height="22px" Width="72px" TextMode="Number" />
         &nbsp;Hasta
         <asp:TextBox ID="noAsientoHasta" runat="server" required="required" Height="22px" Width="83px" TextMode="Number"></asp:TextBox>
         <br />Costo:
         <asp:TextBox ID="CostoTextBox" runat="server" required="required" />
-        <br />Tipo:
-        <asp:TextBox ID="TipoTextBox" runat="server" required="required" />
         <br />
         <br />&nbsp;&nbsp;&nbsp;
         <asp:Button ID="generate" runat="server" Text="Generar" />
@@ -123,6 +121,13 @@
     </asp:UpdatePanel>--%>
     <div style="clear:both;">
         <br />
+        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="noAsientoDe" ErrorMessage="Debe Ingresar Un Valor Mayor que 1" MaximumValue="5000" MinimumValue="1"></asp:RangeValidator>
+        <br />
+        <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="noAsientoHasta" ErrorMessage="Debe Ingresar Un Valor Mayor que 2" MaximumValue="5000" MinimumValue="2"></asp:RangeValidator>
+        <br />
+        <asp:RangeValidator ID="RangeValidator3" runat="server" ErrorMessage="Debe Ingresar Un Valor Mayor que 0" MaximumValue="5000" MinimumValue="0"></asp:RangeValidator>
+        <br />
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CostoTextBox" ErrorMessage="Debe Ingresar Un Valor de la forma: (500.00)" ValidationExpression="(\d)+(\.\d{2})?"></asp:RegularExpressionValidator>
         <br />
         
     </div>

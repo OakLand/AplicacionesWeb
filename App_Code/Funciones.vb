@@ -80,7 +80,7 @@ Public Class Funciones
         End Try
     End Sub
 
-    Public Sub NewEvento(ByVal Id_Persona As Integer, ByVal Descripcion As String, ByVal Ubicacion As String, ByVal fecha As String, ByVal Hora As String, ByVal Categoria As Integer, ByVal Reservar As Integer, ByVal Tiempo_Reserva As Integer)
+    Public Sub NewEvento(ByVal Id_Persona As Integer, ByVal Nombre As String, ByVal Descripcion As String, ByVal Ubicacion As String, ByVal fecha As String, ByVal Hora As String, ByVal Categoria As Integer, ByVal Reservar As Integer, ByVal Tiempo_Reserva As Integer, ByVal Imagen As String)
         Try
             Conectado()
             cmd = New SqlCommand("NewEvento")
@@ -88,6 +88,7 @@ Public Class Funciones
             cmd.Connection = cnn
 
             cmd.Parameters.AddWithValue("@id_persona", Id_Persona)
+            cmd.Parameters.AddWithValue("@nombre", Nombre)
             cmd.Parameters.AddWithValue("@descripcion", Descripcion)
             cmd.Parameters.AddWithValue("@ubicacion", Ubicacion)
             cmd.Parameters.AddWithValue("@fecha", fecha)
@@ -95,6 +96,7 @@ Public Class Funciones
             cmd.Parameters.AddWithValue("@categoria", Categoria)
             cmd.Parameters.AddWithValue("@reservar", Reservar)
             cmd.Parameters.AddWithValue("@tiempo_reserva", Tiempo_Reserva)
+            cmd.Parameters.AddWithValue("@imagen", Imagen)
 
             Dim dr As SqlDataReader
             dr = cmd.ExecuteReader
@@ -251,6 +253,31 @@ Public Class Funciones
             dr = cmd.ExecuteReader
         Catch ex As Exception
             MsgBox("Error al Crear el Area/Seccion: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+    End Sub
+
+    Public Sub generate_Tickets(ByVal persona As Integer, ByVal area As Integer, ByVal seccion As Integer, ByVal fila As Integer, ByVal costo As Decimal, ByVal evento As Integer, ByVal inicio As Integer, ByVal fin As Integer)
+        Try
+            Conectado()
+            cmd = New SqlCommand("generateTickets")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+
+            cmd.Parameters.AddWithValue("@Id_Persona", persona)
+            cmd.Parameters.AddWithValue("@Id_Area", area)
+            cmd.Parameters.AddWithValue("@Id_Seccion", seccion)
+            cmd.Parameters.AddWithValue("@Fila", fila)
+            cmd.Parameters.AddWithValue("@Costo", costo)
+            cmd.Parameters.AddWithValue("@Id_Evento", evento)
+            cmd.Parameters.AddWithValue("@Inicio", inicio)
+            cmd.Parameters.AddWithValue("@Fin", fin)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+        Catch ex As Exception
+            MsgBox("Error al generar Boletos: " & ex.Message)
         Finally
             Desconectado()
         End Try
