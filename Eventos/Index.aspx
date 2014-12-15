@@ -56,11 +56,9 @@
             </EditItemTemplate>
 
             <EmptyDataTemplate>
-                <table runat="server" style="width: 100%; background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
-                    <tr>
-                        <td style="text-align: center">No hay Eventos Disponibles.</td>
-                    </tr>
-                </table>
+                <div class="alert alert-danger" role="alert">
+                            No hay <strong>Eventos</strong> disponibles.
+                        </div>
             </EmptyDataTemplate>
             <EmptyItemTemplate>
 <td runat="server" />

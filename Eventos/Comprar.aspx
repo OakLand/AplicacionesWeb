@@ -117,7 +117,9 @@
                 <asp:BoundField DataField="Disponibles" HeaderText="Cantidad" SortExpression="Disponibles" />
             </Columns>
             <EmptyDataTemplate>
-                No Hay Boletos Disponibles
+                <div class="alert alert-danger" role="alert">
+                            No hay <strong>Boletos</strong> disponibles.
+                        </div>
             </EmptyDataTemplate>
 
         </asp:GridView>
