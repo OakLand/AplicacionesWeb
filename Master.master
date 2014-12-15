@@ -56,7 +56,7 @@
                         <a href="/Promotor/Eventos.aspx">Mis Eventos</a>
                     </li>
                     <li class="Admin">
-                        <a href="Admin/EditarCategorias.aspx">Categorias</a>
+                        <a href="/Admin/EditarCategorias.aspx">Categorias</a>
                     </li>
                     <li class="Admin dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Solicitudes <span class="caret"></span></a>

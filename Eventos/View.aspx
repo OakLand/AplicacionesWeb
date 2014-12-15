@@ -109,7 +109,7 @@
     </asp:FormView>
     <br />
     <div>
-        <asp:GridView ID="gridBoletos" runat="server" AutoGenerateColumns="False" DataSourceID="sqlBoletos">
+        <asp:GridView ID="gridBoletos" runat="server" AutoGenerateColumns="False" DataSourceID="sqlBoletos" GridLines="None">
             <Columns>
                 <asp:CommandField SelectText="Reservar" ShowSelectButton="True" />
                 <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
@@ -119,7 +119,9 @@
                 <asp:BoundField DataField="Disponibles" HeaderText="Disponibles" ReadOnly="True" SortExpression="Disponibles" />
             </Columns>
             <EmptyDataTemplate>
-                No Hay Boletos Disponibles
+                <div class="alert alert-danger" role="alert">
+                    No hay <strong>Boletos</strong> disponibles.
+                </div>
             </EmptyDataTemplate>
         </asp:GridView>
         <br />

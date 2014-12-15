@@ -23,14 +23,14 @@ Partial Class Admin_SolicitudesCategorias
 
     Protected Sub cmdAceptar_Click(sender As Object, e As EventArgs) Handles cmdAceptar.Click
         If Not IsNothing(Me.lblId.Text) And Not Me.lblId.Text.Equals("") Then
-            fun.cambioSolicitud(CType(Me.lblId.Text, Integer), 1, "cambioSolicitudCate")
+            fun.cambioSolicitud(CType(Me.lblId.Text, Integer), 1, "cambioCategoria")
         End If
-        Response.Redirect("/Admin/SolicitudesCategorias.aspx")
+        Response.Redirect("/Admin/EditarCategorias.aspx")
     End Sub
 
     Protected Sub cmdRechazar_Click(sender As Object, e As EventArgs) Handles cmdRechazar.Click
         If Not IsNothing(Me.lblId.Text) And Not Me.lblId.Text.Equals("") Then
-            fun.cambioSolicitud(CType(Me.lblId.Text, Integer), 0, "cambioSolicitudCate")
+            fun.cambioSolicitud(CType(Me.lblId.Text, Integer), 0, "cambioCategoria")
         End If
         Response.Redirect("/Admin/SolicitudesCategorias.aspx")
     End Sub
