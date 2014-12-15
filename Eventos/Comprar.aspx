@@ -107,7 +107,7 @@
     </asp:FormView>
     <br />
     <div>
-        <asp:GridView ID="gridBoletos" runat="server" AutoGenerateColumns="False" DataSourceID="sqlBoletos">
+        <asp:GridView ID="gridBoletos" runat="server" AutoGenerateColumns="False" DataSourceID="sqlBoletos" GridLines="None">
             <Columns>
                 <asp:CommandField SelectText="Comprar" ShowSelectButton="True" />
                 <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
