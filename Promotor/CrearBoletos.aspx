@@ -5,34 +5,71 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <br />
-            <div style="display: inline-block; float: left">
-        Area:
-        <asp:DropDownList ID="Id_AreaTextBox" runat="server" required="required" DataSourceID="sqlArea" DataTextField="Descripcion" DataValueField="Id" Width="123px">
-        </asp:DropDownList>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="areaPlus" runat="server" Text="+" OnClick="areaPlus_Click" CausesValidation="False" UseSubmitBehavior="False" />
-        <br />Seccion:
-        <asp:DropDownList ID="Id_SeccionTextBox" runat="server" required="required" DataSourceID="sqlSeccion" DataTextField="Descripcion" DataValueField="Id" Width="126px">
-        </asp:DropDownList>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="seccionPlus" runat="server" Text="+" OnClick="seccionPlus_Click" UseSubmitBehavior="False" />
-        <br />Fila:
-        <asp:TextBox ID="FilaTextBox" runat="server" required="required" />
-        <br />No_Asiento: De
-        <asp:TextBox ID="noAsientoDe" runat="server" required="required" Height="22px" Width="72px" TextMode="Number" />
-        &nbsp;Hasta
-        <asp:TextBox ID="noAsientoHasta" runat="server" required="required" Height="22px" Width="83px" TextMode="Number"></asp:TextBox>
-        <br />Costo:
-        <asp:TextBox ID="CostoTextBox" runat="server" required="required" />
-        <br />Tipo:
-        <asp:TextBox ID="TipoTextBox" runat="server" required="required" />
-        <br />
-        <br />&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="generate" runat="server" Text="Generar" />
-&nbsp;
-        <asp:Button ID="terminar" runat="server" Text="Terminar" UseSubmitBehavior="False" />
-    </div>
+        <h1 class="page-header">Crear Boletos</h1>
+        <div class="form-crear-boletos" role="form">
+            <h2 class="form-signin-heading">
+            Ingrese la información de los boletos
+            </h2>
+            <div class="form-group">
+                <label for="Id_AreaTextBox" class="col-sm-2 control-label">Area</label>
+                <div class="col-sm-12">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <asp:Button ID="areaPlus" runat="server" Text="+" OnClick="areaPlus_Click" CausesValidation="False" CssClass=" btn btn-default" UseSubmitBehavior="False" />
+                        <asp:DropDownList ID="Id_AreaTextBox" autofocus="autofocus" CssClass="btn btn-default dropdown-toggle agregar-btn" runat="server" required="required" DataSourceID="sqlArea" DataTextField="Descripcion" DataValueField="Id" >
+                        </asp:DropDownList>
+                    </div>  
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Id_SeccionTextBox" class="col-sm-2 control-label">Sección</label>
+                <div class="col-sm-12">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <asp:Button ID="seccionPlus" runat="server" Text="+" OnClick="seccionPlus_Click" UseSubmitBehavior="False" CausesValidation="False" CssClass="btn btn-default" />
+                        <asp:DropDownList ID="Id_SeccionTextBox"  CssClass="btn btn-default dropdown-toggle agregar-btn" runat="server" required="required" DataSourceID="sqlSeccion" DataTextField="Descripcion" DataValueField="Id" >
+                        </asp:DropDownList>
+                    </div>  
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="FilaTextBox" class="col-sm-2 control-label">Fila</label>
+                <div  class="col-sm-12">
+                    <asp:TextBox ID="FilaTextBox" runat="server" required="required" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="noAsientoDe" class="col-sm-2 control-label">Asientos desde</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="noAsientoDe" class="form-control"  runat="server" required="required"  Width="72px" TextMode="Number" />
+                </div>
+                <label for="noAsientoHasta" class="col-sm-2 control-label">hasta</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="noAsientoHasta"  class="form-control" runat="server" required="required"  Width="83px" TextMode="Number"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="CostoTextBox" class="col-sm-2 control-label">Costo</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="CostoTextBox" class="form-control" runat="server" required="required" />
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <label for="TipoTextBox" class="col-sm-2 control-label">Tipo</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="TipoTextBox" runat="server" required="required" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group" style="padding-top:10px;">
+                <div class="col-sm-12">
+                    <asp:Button ID="generate" runat="server" Text="Generar" CssClass="btn btn-default" />
+                    <asp:Button ID="terminar" runat="server" Text="Terminar" CssClass="btn btn-default" UseSubmitBehavior="False" />
+                </div>
+                
+            </div>
+        </div>
+       
+        
             <br />
 
             

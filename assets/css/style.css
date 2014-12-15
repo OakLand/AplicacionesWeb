@@ -2,7 +2,7 @@
     padding-top: 70px;
 }
 
-.form-signin, .form-register {
+.form-signin, .form-register, .form-nuevo-evento, .form-crear-boletos {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
@@ -15,27 +15,8 @@
   padding: 0 0px;
   text-align: center;
 }
-
-#Formulario {
-    width: 38%;
-    text-align: left;
-}
-
 #buttons {
   text-align: center;
-}
-
-#contenedor {
-  display: table;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-}
-
-#contenido {
-  display: table-cell;
-  vertical-align: middle;
-  position: relative;
 }
 
 .new {
@@ -43,7 +24,9 @@
     width: 39%;
     display: inline-block;
 }
-
+.agregar-btn {
+    padding-bottom: 8px;
+}
 /**FILE UPLOADER***/
 .btn-file {
     position: relative;

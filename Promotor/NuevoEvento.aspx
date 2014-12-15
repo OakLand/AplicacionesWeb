@@ -16,68 +16,71 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <h1 class="page-header">Nuevo Eventos</h1>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-    <br />
-    <div  style="text-align:center;">
-        <asp:Label ID="Label1" runat="server" class="lead" Text="Nuevo Evento"></asp:Label>
-    </div>
-    <br />
-    <br />
-    <div id="contenedor">
-        <div id="contenido">
-            <div id="Formulario">
-                        <div class="new">
-                            Descripcion:
-                            <asp:TextBox ID="DescripcionTextBox" runat="server" Height="45px" Width="162px" required="required" TextMode="MultiLine" />
-                            <br />
-                            <br />
-                            Fecha:
-                            <asp:TextBox ID="FechaTextBox" runat="server" required="required" />
-                            <asp:CalendarExtender ID="FechaTextBox_CalendarExtender" runat="server" Enabled="True" TargetControlID="FechaTextBox">
-                            </asp:CalendarExtender>
-                            <br />
-                            <br />
-                            Reservar:
-                            <asp:DropDownList ID="ReservarTextBox" class="reservar" runat="server" Width="128px">
+        <div class="form-nuevo-evento" role="form">
+            <h2 class="form-signin-heading">
+                Ingrese la información del evento
+            </h2>
+            <div class="form-group">
+            <label for="DescripcionTextBox" class="col-sm-2 control-label">Descripción</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="DescripcionTextBox" class="form-control" runat="server" required="required" TextMode="MultiLine" autofocus="autofocus" />
+                    
+                </div>
+            </div>
+
+            <div class="form-group">
+            <label for="FechaTextBox" class="col-sm-2 control-label">Fecha</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="FechaTextBox" class="form-control" runat="server" required="required" />
+                    <asp:CalendarExtender ID="FechaTextBox_CalendarExtender" runat="server" Enabled="True" TargetControlID="FechaTextBox">
+                    </asp:CalendarExtender>
+                </div>
+            </div>
+            <div class="form-group">
+            <label for="HoraTextBox" class="col-sm-2 control-label">Hora</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="HoraTextBox" runat="server" required="required" TextMode="Time" class="form-control"  />
+                </div>
+            </div>
+            <div class="form-group">
+            <label for="ReservarTextBox" class="col-sm-8 control-label">Habilitar Reservación</label>
+                <div class="col-sm-12">
+                     <asp:DropDownList ID="ReservarTextBox" class="reservar col-sm-4 form-control " runat="server" >
                                 <asp:ListItem Value="1">Si</asp:ListItem>
                                 <asp:ListItem Value="0">No</asp:ListItem>
-                            </asp:DropDownList>
-                            <br />
-                            <br />
-                            Categoria:
-                            <asp:DropDownList ID="CategoriaTextBox" runat="server" DataSourceID="sqlCategoria" DataTextField="Nombre" DataValueField="Id" required="required" Height="22px" Width="115px">
-                            </asp:DropDownList>
-                        </div>
-                        <div class="new" style="float: right">
-                            Ubicacion:
-                            <asp:TextBox ID="UbicacionTextBox" runat="server" Height="45px"  Width="155px" required="required" TextMode="MultiLine" />
-                            <br />
-                            <br />
-                            Hora:
-                            <asp:TextBox ID="HoraTextBox" runat="server" required="required" TextMode="Time" />
-                            <br />
-                            <br />
-                            Días de Reserva:
-                            <asp:TextBox ID="Tiempo_ReservaTextBox" class="reservar" runat="server" Width="60px" Height="30" Font-Size="Large" required="required" />
-                            <asp:NumericUpDownExtender ID="Tiempo_ReservaTextBox_NumericUpDownExtender" runat="server" Enabled="True" Maximum="100" Minimum="0" RefValues="" ServiceDownMethod="" ServiceDownPath="" ServiceUpMethod="" Tag="" TargetButtonDownID="" TargetButtonUpID="" TargetControlID="Tiempo_ReservaTextBox" Width="100">
-                            </asp:NumericUpDownExtender>
-                            <br />
-                            <br />
-                            <br />
-                            <div style="float:right">
-                                <asp:Button ID="Insert" runat="server" Text="Crear" />
-                                &nbsp;&nbsp;
-                                <asp:linkButton ID="Cancel" runat="server" Text="Cancelar" PostBackUrl="~/Promotor/Eventos.aspx" />
-                            </div>
-                        </div>
-
-
-
+                     </asp:DropDownList>
+                </div>
             </div>
-        </div>
-    </div>
-    <br />
+            <div class="form-group">
+            <label for="Tiempo_ReservaTextBox" class="col-sm-8 control-label">Días de Reserva</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="Tiempo_ReservaTextBox" class="form-control" runat="server"  required="required" />
+                </div>
+            </div>
+            <div class="form-group">
+            <label for="CategoriaTextBox" class="col-sm-2 control-label">Categoria</label>
+                <div class="col-sm-12">
+                    <asp:DropDownList ID="CategoriaTextBox" runat="server" CssClass="form-control" DataSourceID="sqlCategoria" DataTextField="Nombre" DataValueField="Id" required="required">
+                   </asp:DropDownList>
+                </div>
+            </div>          
+            <div class="form-group" >
+            <label for="UbicacionTextBox" class="col-sm-2 control-label">Ubicación</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="UbicacionTextBox" runat="server" class="form-control"  required="required" TextMode="MultiLine" />
+                </div>
+            </div>
+            <div style="float:right; padding-top:10px;">
+                <asp:Button ID="Insert" class="btn btn-default" runat="server" Text="Crear" />
+                &nbsp;&nbsp;
+                <asp:linkButton ID="Cancel" runat="server" Text="Cancelar" PostBackUrl="~/Promotor/Eventos.aspx" />
+            </div>
+        </div>                    
+                            
+         
     <asp:SqlDataSource ID="sqlEventos" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DataBase %>" DeleteCommand="DELETE FROM [Evento] WHERE [Id] = @original_Id AND [Id_Persona] = @original_Id_Persona AND [Descripcion] = @original_Descripcion AND [Ubicacion] = @original_Ubicacion AND [Fecha] = @original_Fecha AND [Hora] = @original_Hora AND [Categoria] = @original_Categoria AND [Reservar] = @original_Reservar AND (([Tiempo_Reserva] = @original_Tiempo_Reserva) OR ([Tiempo_Reserva] IS NULL AND @original_Tiempo_Reserva IS NULL))" InsertCommand="INSERT INTO [Evento] ([Id], [Id_Persona], [Descripcion], [Ubicacion], [Fecha], [Hora], [Categoria], [Reservar], [Tiempo_Reserva]) VALUES (@Id, @Id_Persona, @Descripcion, @Ubicacion, @Fecha, @Hora, @Categoria, @Reservar, @Tiempo_Reserva)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Evento]" UpdateCommand="UPDATE [Evento] SET [Id_Persona] = @Id_Persona, [Descripcion] = @Descripcion, [Ubicacion] = @Ubicacion, [Fecha] = @Fecha, [Hora] = @Hora, [Categoria] = @Categoria, [Reservar] = @Reservar, [Tiempo_Reserva] = @Tiempo_Reserva WHERE [Id] = @original_Id AND [Id_Persona] = @original_Id_Persona AND [Descripcion] = @original_Descripcion AND [Ubicacion] = @original_Ubicacion AND [Fecha] = @original_Fecha AND [Hora] = @original_Hora AND [Categoria] = @original_Categoria AND [Reservar] = @original_Reservar AND (([Tiempo_Reserva] = @original_Tiempo_Reserva) OR ([Tiempo_Reserva] IS NULL AND @original_Tiempo_Reserva IS NULL))">
         <DeleteParameters>
             <asp:Parameter Name="original_Id" Type="Int32" />

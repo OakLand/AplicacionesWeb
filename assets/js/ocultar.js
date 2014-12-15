@@ -1,55 +1,32 @@
-﻿window.onload = function () {
-    var elemento = document.getElementById("myID");
-    var noVisibles;
-    var visibles;
-
-    noVisibles = document.getElementsByClassName("Conectado");
-    for (var val = 0; val < noVisibles.length; val++) {
-        noVisibles[val].style.display = 'none';
-    }
-    noVisibles = document.getElementsByClassName("Promotor");
-    for (var val = 0; val < noVisibles.length; val++) {
-        noVisibles[val].style.display = 'none';
-    }
-    noVisibles = document.getElementsByClassName("Comprador");
-    for (var val = 0; val < noVisibles.length; val++) {
-        noVisibles[val].style.display = 'none';
-    }
-    noVisibles = document.getElementsByClassName("Admin");
-    for (var val = 0; val < noVisibles.length; val++) {
-        noVisibles[val].style.display = 'none';
-    }
-    noVisibles = document.getElementsByClassName("Desconectado");
-    for (var val = 0; val < noVisibles.length; val++) {
-        noVisibles[val].style.display = 'none';
-    }
-    
-    if (elemento.value == "1") {
-        visibles = document.getElementsByClassName("Conectado");
-        for (var val = 0; val < visibles.length; val++) {
-            visibles[val].style.removeProperty('display');
-        }
-        visibles = document.getElementsByClassName("Comprador");
-    } else if (elemento.value == "2") {
-        visibles = document.getElementsByClassName("Conectado");
-        for (var val = 0; val < visibles.length; val++) {
-            visibles[val].style.removeProperty('display');
-        }
-        visibles = document.getElementsByClassName("Promotor");
-    } else if (elemento.value == "3") {
-        visibles = document.getElementsByClassName("Conectado");
-        for (var val = 0; val < visibles.length; val++) {
-            visibles[val].style.removeProperty('display');
-        }
-        visibles = document.getElementsByClassName("Admin");
+﻿$(document).ready(function () {
+    var elemento = $("#myID").val();
+    if (elemento == 1) {
+        $(".Conectado").show();
+        $(".Promotor").hide();
+        $(".Comprador").show();
+        $(".Admin").hide();
+        $(".Desconectado").hide();
+    } else if (elemento == 2) {
+        $(".Conectado").show();
+        $(".Promotor").show();
+        $(".Comprador").hide();
+        $(".Admin").hide();
+        $(".Desconectado").hide();
+    } else if (elemento == 3) {
+        $(".Conectado").show();
+        $(".Promotor").hide();
+        $(".Comprador").hide();
+        $(".Admin").show();
+        $(".Desconectado").hide();
     } else {
-        visibles = document.getElementsByClassName("Desconectado");
+        $(".Conectado").hide();
+        $(".Promotor").hide();
+        $(".Comprador").hide();
+        $(".Admin").hide();
+        $(".Desconectado").show();
     }
-    
-    for (var val = 0; val < visibles.length; val++) {
-        visibles[val].style.removeProperty('display');
-    }
-}
+});
+
 
 function leerCookie(nombre) {
     var lista = document.cookie.split(";");

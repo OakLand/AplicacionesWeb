@@ -10,10 +10,9 @@
     </asp:ContentPlaceHolder>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-    <!-- Optional theme -->
     <link rel="stylesheet" href="/assets/css/bootstrap-theme.min.css" />
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
     <link href="/assets/css/style.css" rel="stylesheet" />
     <!-- Latest compiled and minified JavaScript -->
     <script src="/assets/js/bootstrap.min.js"></script> 
@@ -45,20 +44,24 @@
                     <li>
                         <a href="/Eventos/Index.aspx">Eventos</a>
                     </li>
-                    <li>
-                        <a href="#">Contáctanos</a>
-                    </li>
                     <li class="Promotor">
                         <a href="/Promotor/Eventos.aspx">Mis Eventos</a>
                     </li>
+                    <li class="Admin dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Solicitudes <span class="caret"></span></a>
+                           
+                        <ul class="dropdown-menu">
+                             <li>
+                                <a href="/Admin/Solicitudes.aspx">Usuario</a>
+                            </li>
+                            <li>
+                                <a href="/Admin/SolicitudesCategorias.aspx">Categorías</a>
+                            </li>
+                        </ul>
+                        
+                    </li>
                     <li>
                         <a href="/About.aspx">Contáctanos</a>
-
-                    <li class="Admin">
-                        <a href="/Admin/Solicitudes.aspx">Solicitudes Usuario</a>
-                    </li>
-                    <li class="Admin">
-                        <a href="/Admin/SolicitudesCategorias.aspx">Solicitudes Categorías</a>
                     </li>
                     <li class="Conectado">
                         <asp:Label ID="user" runat="server" style="color: white"></asp:Label>
@@ -66,6 +69,7 @@
                     <li class="Conectado">
                         <asp:LinkButton ID="link_logout" Text="Salir" runat="server" />
                     </li>
+                    
                     <li class="">
                         <asp:TextBox ID="myID" style="display:none" Text="id" runat="server"></asp:TextBox>
                     </li>

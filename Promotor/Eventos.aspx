@@ -3,16 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <br />
-    <div style="text-align:center;"><asp:Label ID="Label1" Text="Mis Eventos" class="lead" runat="server" /></div>
-    <br />
-    <div id="contenedor">
-        <div id="contenido">
-            <div id="eventos">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sqlEventos" Width="100%" AllowPaging="True" AllowSorting="True">
+    <h1 class="page-header">Mis Eventos</h1>
+        
+                <asp:GridView ID="GridView1" runat="server" CssClass="table-hover table table-striped"  AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sqlEventos" Width="100%" AllowPaging="True" AllowSorting="True" GridLines="None">
                     <Columns>
                         <asp:CommandField ShowEditButton="True" />
-                        <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" SortExpression="Id" />
                         <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion" />
                         <asp:BoundField DataField="Ubicacion" HeaderText="Ubicación" SortExpression="Ubicacion" />
                         <asp:BoundField DataField="Fecha" HeaderText="Fecha" SortExpression="Fecha" />
@@ -22,17 +17,16 @@
                         <asp:BoundField DataField="Tiempo_Reserva" HeaderText="Tiempo Reserva" SortExpression="Tiempo_Reserva" />
                     </Columns>
                     <EmptyDataTemplate>
-                        No Hay Eventos Disponibles
+                        <div class="alert alert-danger" role="alert">
+                            No tienes <strong>Eventos</strong> creados.
+                        </div>
                     </EmptyDataTemplate>
                 </asp:GridView>
-            </div>
-        </div>
-    </div>
-    <br />
+       
     <div id="buttons">
-        <asp:Button ID="newEvent" runat="server" Text="Nuevo Evento" />
+        <asp:Button ID="newEvent" class="btn btn-default"  runat="server" Text="Nuevo Evento" />
     &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="soliCat" runat="server" Text="Solicitar Categoría" />
+        <asp:Button ID="soliCat" class="btn btn-default"  runat="server" Text="Solicitar Categoría" />
     </div>
 <br />
 <asp:SqlDataSource ID="sqlEventos" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DataBase %>" DeleteCommand="DELETE FROM [Evento] WHERE [Id] = @original_Id AND [Id_Persona] = @original_Id_Persona AND [Descripcion] = @original_Descripcion AND [Ubicacion] = @original_Ubicacion AND [Fecha] = @original_Fecha AND [Hora] = @original_Hora AND [Categoria] = @original_Categoria AND [Reservar] = @original_Reservar AND (([Tiempo_Reserva] = @original_Tiempo_Reserva) OR ([Tiempo_Reserva] IS NULL AND @original_Tiempo_Reserva IS NULL))" InsertCommand="INSERT INTO [Evento] ([Id], [Id_Persona], [Descripcion], [Ubicacion], [Fecha], [Hora], [Categoria], [Reservar], [Tiempo_Reserva]) VALUES (@Id, @Id_Persona, @Descripcion, @Ubicacion, @Fecha, @Hora, @Categoria, @Reservar, @Tiempo_Reserva)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT E.Id, P.Nombre as Persona, E.Descripcion, E.Ubicacion, E.Fecha, E.Hora, C.Nombre as Categoria, E.Reservar, E.Tiempo_Reserva FROM [Evento] as E inner join [Categoria] as C on E.Categoria = C.Id	inner join [Persona] as P on E.Id_Persona = P.Id" UpdateCommand="UPDATE [Evento] SET [Id_Persona] = @Id_Persona, [Descripcion] = @Descripcion, [Ubicacion] = @Ubicacion, [Fecha] = @Fecha, [Hora] = @Hora, [Categoria] = @Categoria, [Reservar] = @Reservar, [Tiempo_Reserva] = @Tiempo_Reserva WHERE [Id] = @original_Id AND [Id_Persona] = @original_Id_Persona AND [Descripcion] = @original_Descripcion AND [Ubicacion] = @original_Ubicacion AND [Fecha] = @original_Fecha AND [Hora] = @original_Hora AND [Categoria] = @original_Categoria AND [Reservar] = @original_Reservar AND (([Tiempo_Reserva] = @original_Tiempo_Reserva) OR ([Tiempo_Reserva] IS NULL AND @original_Tiempo_Reserva IS NULL))">

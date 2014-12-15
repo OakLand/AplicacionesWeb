@@ -3,9 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <p>
-        <br />
-        <asp:GridView ID="gridSoliCategorias" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sqlSoliCategorias">
+        <h1 class="page-header">Solicitudes de Categorias</h1>
+        <asp:GridView ID="gridSoliCategorias" CssClass="table table-striped table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sqlSoliCategorias" GridLines="None">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
@@ -15,10 +14,12 @@
                 <asp:BoundField DataField="fecha" HeaderText="fecha" SortExpression="fecha" />
             </Columns>
             <EmptyDataTemplate>
-                No Hay Solicitudes Disponibles
+                <div class="alert alert-danger" role="alert">
+                    No hay Solicitudes de <strong>Categorias</strong>.
+                </div>
             </EmptyDataTemplate>
         </asp:GridView>
-    </p>
+    
     <p>
         <asp:Button ID="cmdAceptar" runat="server" Text="Aceptar Categoria" Visible="False" />
 &nbsp;&nbsp;
