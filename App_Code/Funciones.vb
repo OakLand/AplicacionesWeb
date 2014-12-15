@@ -31,6 +31,29 @@ Public Class Funciones
         End Try
     End Function
 
+    Function userExists(user As String) As Boolean
+        Try
+            Conectado()
+            cmd = New SqlCommand("userExists")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.Parameters.AddWithValue("@user", user)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+            If dr.HasRows = True Then
+                Return True
+            Else
+                Return False
+            End If
+        Catch ex As Exception
+            MsgBox("Error al Validar: " & ex.Message)
+            Return False
+        Finally
+            Desconectado()
+        End Try
+    End Function
+
     Public Function getId(ByVal tabla As String) As Integer
         Try
             Conectado()
