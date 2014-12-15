@@ -20,6 +20,14 @@
     <!-- Ocultar Según Login -->
     <script src="/assets/js/ocultar.js"></script>
     <script src="/assets/js/script.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var cook = document.cookie.substring(document.cookie.indexOf("Tickets=") + 8);
+            var usuario = cook.substring(cook.indexOf("usuario=") + 8);
+            var user = usuario.substring(0, usuario.indexOf("&id="));
+            document.getElementById("user").innerHTML = user;
+        }
+    </script>
 </head>
 <body>
 
@@ -64,7 +72,7 @@
                         <a href="/About.aspx">Contáctanos</a>
                     </li>
                     <li class="Conectado">
-                        <asp:Label ID="user" runat="server" style="color: white"></asp:Label>
+                        <label id="user" runat="server" style="color: white;height: 40px;padding-top: 14px; margin-left:5px; font: small-caption"></label>
                     </li>
                     <li class="Conectado">
                         <asp:LinkButton ID="link_logout" Text="Salir" runat="server" />

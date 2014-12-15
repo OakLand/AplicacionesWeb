@@ -64,8 +64,9 @@
             <div class="form-group">
             <label for="Tiempo_ReservaTextBox" class="col-sm-8 control-label">Días de Reserva</label>
                 <div class="col-sm-12">
-                    <asp:TextBox ID="Tiempo_ReservaTextBox" class="form-control" runat="server"  required="required" />
+                    <asp:TextBox ID="Tiempo_ReservaTextBox" class="form-control" runat="server"  required="required" TextMode="Number" />
                 </div>
+                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="Tiempo_ReservaTextBox" ErrorMessage="Ingrese un valor mayor o igual que 0" MaximumValue="5000" MinimumValue="0"></asp:RangeValidator>
             </div>
             <div class="form-group">
             <label for="CategoriaTextBox" class="col-sm-2 control-label">Categoria</label>

@@ -36,15 +36,18 @@
                 <div  class="col-sm-12">
                     <asp:TextBox ID="FilaTextBox" runat="server" required="required" class="form-control" />
                 </div>
+        <asp:RangeValidator ID="RangeValidator3" runat="server" ErrorMessage="Debe Ingresar Un Valor Mayor que 0" MaximumValue="5000" MinimumValue="0" ControlToValidate="FilaTextBox"></asp:RangeValidator>
             </div>
             <div class="form-group">
                 <label for="noAsientoDe" class="col-sm-2 control-label">Asientos desde</label>
                 <div class="col-sm-12">
                     <asp:TextBox ID="noAsientoDe" class="form-control"  runat="server" required="required"  Width="72px" TextMode="Number" />
+        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="noAsientoDe" ErrorMessage="Debe Ingresar Un Valor Mayor que 1" MaximumValue="5000" MinimumValue="1"></asp:RangeValidator>
                 </div>
                 <label for="noAsientoHasta" class="col-sm-2 control-label">hasta</label>
                 <div class="col-sm-12">
                     <asp:TextBox ID="noAsientoHasta"  class="form-control" runat="server" required="required"  Width="83px" TextMode="Number"></asp:TextBox>
+        <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="noAsientoHasta" ErrorMessage="Debe Ingresar Un Valor Mayor que 2" MaximumValue="5000" MinimumValue="2"></asp:RangeValidator>
                 </div>
             </div>
             <div class="form-group">
@@ -52,6 +55,8 @@
                 <div class="col-sm-12">
                     <asp:TextBox ID="CostoTextBox" class="form-control" runat="server" required="required" />
                 </div>
+                
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CostoTextBox" ErrorMessage="Debe Ingresar Un Valor de la forma: (500.00)" ValidationExpression="(\d)+(\.\d{2})?"></asp:RegularExpressionValidator>
                 
             </div>
             <div class="form-group">
@@ -159,13 +164,9 @@
     </asp:UpdatePanel>--%>
     <div style="clear:both;">
         <br />
-        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="noAsientoDe" ErrorMessage="Debe Ingresar Un Valor Mayor que 1" MaximumValue="5000" MinimumValue="1"></asp:RangeValidator>
         <br />
-        <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="noAsientoHasta" ErrorMessage="Debe Ingresar Un Valor Mayor que 2" MaximumValue="5000" MinimumValue="2"></asp:RangeValidator>
         <br />
-        <asp:RangeValidator ID="RangeValidator3" runat="server" ErrorMessage="Debe Ingresar Un Valor Mayor que 0" MaximumValue="5000" MinimumValue="0"></asp:RangeValidator>
         <br />
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CostoTextBox" ErrorMessage="Debe Ingresar Un Valor de la forma: (500.00)" ValidationExpression="(\d)+(\.\d{2})?"></asp:RegularExpressionValidator>
         <br />
         
     </div>

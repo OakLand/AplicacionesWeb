@@ -3,10 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script>
         function crearCookie(id) {
-            var num = id.substring(8);
+            //var num = id.substring(8);
             var d = new Date();
             d.setDate(d.getDate + 1);
-            document.cookie = "event=" + num + "; expires=" + d;
+            document.cookie = "event=" + id + "; expires=" + d;
         }
     </script>
 </asp:Content>
@@ -14,47 +14,6 @@
     <div style="text-align: center">
 
         <asp:ListView ID="ListView1" runat="server" DataSourceID="sqlEventos" GroupItemCount="2">
-            <AlternatingItemTemplate>
-                <div id="Div1" runat="server" class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/800x500" alt="">
-                        <div class="caption">
-                            <h3>Titulo 2</h3>
-                            <p><%# Eval("Descripcion") %></p>
-                            <p><%# Eval("Ubicacion") %></p>
-                            <p><%# Eval("Fecha") %></p>
-                            <p><%# Eval("Hora") %></p>
-                            <p>
-                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">Más información</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </AlternatingItemTemplate>
-            <EditItemTemplate>
-                <td runat="server" style="background-color: #FFCC66;color: #000080;">Promotor:
-                    <asp:TextBox ID="PromotorTextBox" runat="server" Text='<%# Bind("Promotor") %>' />
-                    <br />Descripcion:
-                    <asp:TextBox ID="DescripcionTextBox" runat="server" Text='<%# Bind("Descripcion") %>' />
-                    <br />Ubicacion:
-                    <asp:TextBox ID="UbicacionTextBox" runat="server" Text='<%# Bind("Ubicacion") %>' />
-                    <br />Fecha:
-                    <asp:TextBox ID="FechaTextBox" runat="server" Text='<%# Bind("Fecha") %>' />
-                    <br />Hora:
-                    <asp:TextBox ID="HoraTextBox" runat="server" Text='<%# Bind("Hora") %>' />
-                    <br />Categoría:
-                    <asp:TextBox ID="CategoríaTextBox" runat="server" Text='<%# Bind("Categoría") %>' />
-                    <br />Reservar:
-                    <asp:TextBox ID="ReservarTextBox" runat="server" Text='<%# Bind("Reservar") %>' />
-                    <br />Tiempo_Reserva:
-                    <asp:TextBox ID="Tiempo_ReservaTextBox" runat="server" Text='<%# Bind("Tiempo_Reserva") %>' />
-                    <br />
-                    <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Actualizar" />
-                    <br />
-                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancelar" />
-                    <br /></td>
-            </EditItemTemplate>
-
             <EmptyDataTemplate>
                 <table runat="server" style="width: 100%; background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
                     <tr>
@@ -70,29 +29,6 @@
                     <td id="itemPlaceholder" runat="server"></td>
                 </tr>
             </GroupTemplate>
-            <InsertItemTemplate>
-                <td runat="server" style="">Promotor:
-                    <asp:TextBox ID="PromotorTextBox" runat="server" Text='<%# Bind("Promotor") %>' />
-                    <br />Descripcion:
-                    <asp:TextBox ID="DescripcionTextBox" runat="server" Text='<%# Bind("Descripcion") %>' />
-                    <br />Ubicacion:
-                    <asp:TextBox ID="UbicacionTextBox" runat="server" Text='<%# Bind("Ubicacion") %>' />
-                    <br />Fecha:
-                    <asp:TextBox ID="FechaTextBox" runat="server" Text='<%# Bind("Fecha") %>' />
-                    <br />Hora:
-                    <asp:TextBox ID="HoraTextBox" runat="server" Text='<%# Bind("Hora") %>' />
-                    <br />Categoría:
-                    <asp:TextBox ID="CategoríaTextBox" runat="server" Text='<%# Bind("Categoría") %>' />
-                    <br />Reservar:
-                    <asp:TextBox ID="ReservarTextBox" runat="server" Text='<%# Bind("Reservar") %>' />
-                    <br />Tiempo_Reserva:
-                    <asp:TextBox ID="Tiempo_ReservaTextBox" runat="server" Text='<%# Bind("Tiempo_Reserva") %>' />
-                    <br />
-                    <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insertar" />
-                    <br />
-                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Borrar" />
-                    <br /></td>
-            </InsertItemTemplate>
             <ItemTemplate>
                 <div runat="server" class="col-md-3 col-sm-6 hero-feature">
                     <div class="thumbnail">
@@ -107,14 +43,13 @@
                             <p>
                                 <%--<asp:Button ID="btnComprar" Text="Comprar!" runat="server" CausesValidation="False" class="btn btn-primary" OnClientClick="crearCookie()" />
                                 <asp:Button ID="btnCancelar" Text="Más información" runat="server" CausesValidation="False" class="btn btn-default" />--%>
-                                <a id="Comprar_<%# Eval("Id") %>" onclick="crearCookie(this.id)" href="/Eventos/Comprar.aspx" class="boton btn btn-primary">Comprar!</a> 
-                                <a id="Info_<%# Eval("Id") %>" onclick="crearCookie(this.id)" href="/Eventos/View.aspx" class="boton btn btn-default">Más información</a>
+                                <a id="Comprar_<%# Eval("Id") %>" onclick="crearCookie(<%# Eval("Id") %>)" href="/Eventos/Comprar.aspx" class="Comprador boton btn btn-primary">Comprar!</a> 
+                                <a id="Info_<%# Eval("Id") %>" onclick="crearCookie(<%# Eval("Id") %>)" href="/Eventos/View.aspx" class="boton btn btn-default">Más información</a>
                             </p>
                         </div>
                     </div>
                 </div>
             </ItemTemplate>
-<<<<<<< HEAD
             <LayoutTemplate>
                 <div class="row text-center" id="groupPlaceholderContainer" runat="server">
                     <div id="groupPlaceholder" runat="server"></div>

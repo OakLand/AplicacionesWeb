@@ -10,7 +10,7 @@ Partial Class Master
         End If
 
         If Not Request.Cookies("Tickets")("usuario") Is Nothing Then
-            Me.user.Text = Request.Cookies("Tickets")("usuario")
+            'Me.user.Text = Request.Cookies("Tickets")("usuario")
             Me.myID.Text = Request.Cookies("Tickets")("tipo")
         End If
     End Sub
@@ -19,7 +19,7 @@ Partial Class Master
         Dim vCookie As New HttpCookie("Tickets")
         vCookie.Expires = DateTime.Now.AddDays(1)
         Response.Cookies.Add(vCookie)
-        Me.user.Text = ""
+        'Me.user.Text = ""
         Me.myID.Text = "des"
         Response.Redirect("/Default.aspx")
     End Sub

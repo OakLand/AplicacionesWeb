@@ -398,4 +398,27 @@ Public Class Funciones
         End Try
         Return False
     End Function
+
+    Public Function ReservarBoleto(ByVal persona As Integer, ByVal evento As Integer, ByVal area As String, ByVal seccion As String, ByVal fila As Integer) As Boolean
+        Try
+            Conectado()
+            cmd = New SqlCommand("ReservarBoleto")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.Parameters.AddWithValue("@id_persona", persona)
+            cmd.Parameters.AddWithValue("@evento", evento)
+            cmd.Parameters.AddWithValue("@area", area)
+            cmd.Parameters.AddWithValue("@seccion", seccion)
+            cmd.Parameters.AddWithValue("@fila", fila)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+            Return dr.HasRows
+        Catch ex As Exception
+            MsgBox("Error al Comprar Boleto: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+        Return False
+    End Function
 End Class

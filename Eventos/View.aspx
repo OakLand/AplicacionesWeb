@@ -3,20 +3,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    
+    <br />
     <asp:FormView ID="FormView1" runat="server" DataSourceID="sqlEvento">
         <EditItemTemplate>
             Promotor:
             <asp:TextBox ID="PromotorTextBox" runat="server" Text='<%# Bind("Promotor") %>' />
             <br />
-            Descripción:
-            <asp:TextBox ID="DescripciónTextBox" runat="server" Text='<%# Bind("Descripción") %>' />
+            Evento:
+            <asp:TextBox ID="EventoTextBox" runat="server" Text='<%# Bind("Evento") %>' />
             <br />
-            Ubicación:
-            <asp:TextBox ID="UbicaciónTextBox" runat="server" Text='<%# Bind("Ubicación") %>' />
+            Descripcion:
+            <asp:TextBox ID="DescripcionTextBox" runat="server" Text='<%# Bind("Descripcion") %>' />
             <br />
-            Categoría:
-            <asp:TextBox ID="CategoríaTextBox" runat="server" Text='<%# Bind("Categoría") %>' />
+            Ubicacion:
+            <asp:TextBox ID="UbicacionTextBox" runat="server" Text='<%# Bind("Ubicacion") %>' />
             <br />
             Fecha:
             <asp:TextBox ID="FechaTextBox" runat="server" Text='<%# Bind("Fecha") %>' />
@@ -24,36 +24,33 @@
             Hora:
             <asp:TextBox ID="HoraTextBox" runat="server" Text='<%# Bind("Hora") %>' />
             <br />
+            Categoria:
+            <asp:TextBox ID="CategoriaTextBox" runat="server" Text='<%# Bind("Categoria") %>' />
+            <br />
             Reservar:
             <asp:TextBox ID="ReservarTextBox" runat="server" Text='<%# Bind("Reservar") %>' />
             <br />
-            Tiempo de Reserva:
-            <asp:TextBox ID="Tiempo_de_ReservaTextBox" runat="server" Text='<%# Bind("[Tiempo de Reserva]") %>' />
+            Dias de Reserva:
+            <asp:TextBox ID="Dias_de_ReservaTextBox" runat="server" Text='<%# Bind("[Dias de Reserva]") %>' />
             <br />
-            Boletos:
-            <asp:TextBox ID="BoletosTextBox" runat="server" Text='<%# Bind("Boletos") %>' />
-            <br />
-            Disponibles:
-            <asp:TextBox ID="DisponiblesTextBox" runat="server" Text='<%# Bind("Disponibles") %>' />
+            Imagen:
+            <asp:TextBox ID="ImagenTextBox" runat="server" Text='<%# Bind("Imagen") %>' />
             <br />
             <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
             &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
         </EditItemTemplate>
-        <EmptyDataTemplate>
-            Evento No Disponible
-        </EmptyDataTemplate>
         <InsertItemTemplate>
             Promotor:
             <asp:TextBox ID="PromotorTextBox" runat="server" Text='<%# Bind("Promotor") %>' />
             <br />
-            Descripción:
-            <asp:TextBox ID="DescripciónTextBox" runat="server" Text='<%# Bind("Descripción") %>' />
+            Evento:
+            <asp:TextBox ID="EventoTextBox" runat="server" Text='<%# Bind("Evento") %>' />
             <br />
-            Ubicación:
-            <asp:TextBox ID="UbicaciónTextBox" runat="server" Text='<%# Bind("Ubicación") %>' />
+            Descripcion:
+            <asp:TextBox ID="DescripcionTextBox" runat="server" Text='<%# Bind("Descripcion") %>' />
             <br />
-            Categoría:
-            <asp:TextBox ID="CategoríaTextBox" runat="server" Text='<%# Bind("Categoría") %>' />
+            Ubicacion:
+            <asp:TextBox ID="UbicacionTextBox" runat="server" Text='<%# Bind("Ubicacion") %>' />
             <br />
             Fecha:
             <asp:TextBox ID="FechaTextBox" runat="server" Text='<%# Bind("Fecha") %>' />
@@ -61,34 +58,36 @@
             Hora:
             <asp:TextBox ID="HoraTextBox" runat="server" Text='<%# Bind("Hora") %>' />
             <br />
+            Categoria:
+            <asp:TextBox ID="CategoriaTextBox" runat="server" Text='<%# Bind("Categoria") %>' />
+            <br />
             Reservar:
             <asp:TextBox ID="ReservarTextBox" runat="server" Text='<%# Bind("Reservar") %>' />
             <br />
-            Tiempo de Reserva:
-            <asp:TextBox ID="Tiempo_de_ReservaTextBox" runat="server" Text='<%# Bind("[Tiempo de Reserva]") %>' />
+            Dias de Reserva:
+            <asp:TextBox ID="Dias_de_ReservaTextBox" runat="server" Text='<%# Bind("[Dias de Reserva]") %>' />
             <br />
-            Boletos:
-            <asp:TextBox ID="BoletosTextBox" runat="server" Text='<%# Bind("Boletos") %>' />
-            <br />
-            Disponibles:
-            <asp:TextBox ID="DisponiblesTextBox" runat="server" Text='<%# Bind("Disponibles") %>' />
+            Imagen:
+            <asp:TextBox ID="ImagenTextBox" runat="server" Text='<%# Bind("Imagen") %>' />
             <br />
             <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insertar" />
             &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
         </InsertItemTemplate>
         <ItemTemplate>
+            <asp:Image ID="Imagen" runat="server" ImageUrl='<%# Bind("Imagen") %>' Width="200" />
+            <br />
+            <br />
             Promotor:
             <asp:Label ID="PromotorLabel" runat="server" Text='<%# Bind("Promotor") %>' />
             <br />
-            Descripción:
-            <asp:Label ID="DescripciónLabel" runat="server" Text='<%# Bind("Descripción") %>' />
+            Evento:
+            <asp:Label ID="EventoLabel" runat="server" Text='<%# Bind("Evento") %>' />
             <br />
-
-            Ubicación:
-            <asp:Label ID="UbicaciónLabel" runat="server" Text='<%# Bind("Ubicación") %>' />
+            Descripcion:
+            <asp:Label ID="DescripcionLabel" runat="server" Text='<%# Bind("Descripcion") %>' />
             <br />
-            Categoría:
-            <asp:Label ID="CategoríaLabel" runat="server" Text='<%# Bind("Categoría") %>' />
+            Ubicacion:
+            <asp:Label ID="UbicacionLabel" runat="server" Text='<%# Bind("Ubicacion") %>' />
             <br />
             Fecha:
             <asp:Label ID="FechaLabel" runat="server" Text='<%# Bind("Fecha") %>' />
@@ -96,27 +95,45 @@
             Hora:
             <asp:Label ID="HoraLabel" runat="server" Text='<%# Bind("Hora") %>' />
             <br />
+            Categoria:
+            <asp:Label ID="CategoriaLabel" runat="server" Text='<%# Bind("Categoria") %>' />
+            <br />
             Reservar:
             <asp:Label ID="ReservarLabel" runat="server" Text='<%# Bind("Reservar") %>' />
             <br />
-            Tiempo de Reserva:
-            <asp:Label ID="Tiempo_de_ReservaLabel" runat="server" Text='<%# Bind("[Tiempo de Reserva]") %>' />
-            <br />
-            Boletos:
-            <asp:Label ID="BoletosLabel" runat="server" Text='<%# Bind("Boletos") %>' />
-            <br />
-            Disponibles:
-            <asp:Label ID="DisponiblesLabel" runat="server" Text='<%# Bind("Disponibles") %>' />
+            Dias de Reserva:
+            <asp:Label ID="Dias_de_ReservaLabel" runat="server" Text='<%# Bind("[Dias de Reserva]") %>' />
             <br />
 
         </ItemTemplate>
     </asp:FormView>
-    
-    <asp:SqlDataSource ID="sqlEvento" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT        Persona.Nombre AS Promotor, Evento.Descripcion AS Descripción, Evento.Ubicacion AS Ubicación, 
-Categoria.Nombre AS Categoría, Evento.Fecha, Evento.Hora, Evento.Reservar, Evento.Tiempo_Reserva AS [Tiempo de Reserva], (Select count(*) from Boleto) AS Boletos, (Select count(*) from Boleto where Boleto.Tipo = 0) as Disponibles
-FROM            Evento INNER JOIN
-                         Persona ON Evento.Id_Persona = Persona.Id INNER JOIN
-                         Categoria ON Evento.Categoria = Categoria.Id"></asp:SqlDataSource>
-    
+    <br />
+    <div>
+        <asp:GridView ID="gridBoletos" runat="server" AutoGenerateColumns="False" DataSourceID="sqlBoletos">
+            <Columns>
+                <asp:CommandField SelectText="Reservar" ShowSelectButton="True" />
+                <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
+                <asp:BoundField DataField="Seccion" HeaderText="Seccion" SortExpression="Seccion" />
+                <asp:BoundField DataField="Fila" HeaderText="Fila" SortExpression="Fila" />
+                <asp:BoundField DataField="Costo" HeaderText="Costo" SortExpression="Costo" />
+                <asp:BoundField DataField="Disponibles" HeaderText="Disponibles" ReadOnly="True" SortExpression="Disponibles" />
+            </Columns>
+            <EmptyDataTemplate>
+                No Hay Boletos Disponibles
+            </EmptyDataTemplate>
+        </asp:GridView>
+        <br />
+    </div>
+    <asp:SqlDataSource ID="sqlEvento" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT p.Nombre AS Promotor, e.Nombre AS Evento, e.Descripcion, e.Ubicacion, e.Fecha, e.Hora, c.Nombre AS Categoria, e.Reservar, e.Tiempo_Reserva AS [Dias de Reserva], i.Imagen FROM Evento AS e INNER JOIN Categoria AS c ON e.Categoria = c.Id INNER JOIN Imagenes AS i ON e.Id = i.Id INNER JOIN Persona AS p ON e.Id_Persona = p.Id WHERE (e.Id = @Id)">
+        <SelectParameters>
+            <asp:CookieParameter CookieName="event" DefaultValue="" Name="Id" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="sqlBoletos" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT DISTINCT a.Descripcion AS Area, s.Descripcion AS Seccion, b.Fila, b.Costo, COUNT('b.*') AS Disponibles FROM Boleto AS b INNER JOIN Area AS a ON b.Id_Area = a.Id INNER JOIN Seccion AS s ON b.Id_Seccion = s.Id WHERE (b.Id_Evento = @evento) GROUP BY a.Descripcion, s.Descripcion, b.Fila, b.Costo, b.Tipo HAVING (b.Tipo = 1)">
+        <SelectParameters>
+            <asp:CookieParameter CookieName="event" Name="evento" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <br />
 </asp:Content>
 
