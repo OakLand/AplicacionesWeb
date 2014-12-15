@@ -68,8 +68,7 @@
                 
             </div>
         </div>
-       
-        
+
             <br />
 
             
@@ -160,6 +159,13 @@
     </asp:UpdatePanel>--%>
     <div style="clear:both;">
         <br />
+        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="noAsientoDe" ErrorMessage="Debe Ingresar Un Valor Mayor que 1" MaximumValue="5000" MinimumValue="1"></asp:RangeValidator>
+        <br />
+        <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="noAsientoHasta" ErrorMessage="Debe Ingresar Un Valor Mayor que 2" MaximumValue="5000" MinimumValue="2"></asp:RangeValidator>
+        <br />
+        <asp:RangeValidator ID="RangeValidator3" runat="server" ErrorMessage="Debe Ingresar Un Valor Mayor que 0" MaximumValue="5000" MinimumValue="0"></asp:RangeValidator>
+        <br />
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CostoTextBox" ErrorMessage="Debe Ingresar Un Valor de la forma: (500.00)" ValidationExpression="(\d)+(\.\d{2})?"></asp:RegularExpressionValidator>
         <br />
         
     </div>

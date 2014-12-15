@@ -1,9 +1,18 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Index.aspx.vb" Inherits="Eventos_Index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script>
+        function crearCookie(id) {
+            var num = id.substring(8);
+            var d = new Date();
+            d.setDate(d.getDate + 1);
+            document.cookie = "event=" + num + "; expires=" + d;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div style="text-align: center">
+
         <asp:ListView ID="ListView1" runat="server" DataSourceID="sqlEventos" GroupItemCount="2">
             <AlternatingItemTemplate>
                 <div id="Div1" runat="server" class="col-md-3 col-sm-6 hero-feature">
@@ -45,6 +54,7 @@
                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancelar" />
                     <br /></td>
             </EditItemTemplate>
+
             <EmptyDataTemplate>
                 <table runat="server" style="width: 100%; background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
                     <tr>
@@ -86,20 +96,25 @@
             <ItemTemplate>
                 <div runat="server" class="col-md-3 col-sm-6 hero-feature">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/800x500" alt="">
+                        <img src="<%# Eval("Imagen") %>" alt="" width="150" height="150">
                         <div class="caption">
-                            <h3>Titulo</h3>
+                            <p style="display: none"><%# Eval("Id") %></p>
+                            <h3><%# Eval("Nombre") %></h3>
                             <p><%# Eval("Descripcion") %></p>
                             <p><%# Eval("Ubicacion") %></p>
                             <p><%# Eval("Fecha") %></p>
                             <p><%# Eval("Hora") %></p>
                             <p>
-                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">Más información</a>
+                                <%--<asp:Button ID="btnComprar" Text="Comprar!" runat="server" CausesValidation="False" class="btn btn-primary" OnClientClick="crearCookie()" />
+                                <asp:Button ID="btnCancelar" Text="Más información" runat="server" CausesValidation="False" class="btn btn-default" />--%>
+                                <a id="Comprar_<%# Eval("Id") %>" onclick="crearCookie(this.id)" href="/Eventos/Comprar.aspx" class="boton btn btn-primary">Comprar!</a> 
+                                <a id="Info_<%# Eval("Id") %>" onclick="crearCookie(this.id)" href="/Eventos/View.aspx" class="boton btn btn-default">Más información</a>
                             </p>
                         </div>
                     </div>
                 </div>
             </ItemTemplate>
+<<<<<<< HEAD
             <LayoutTemplate>
                 <div class="row text-center" id="groupPlaceholderContainer" runat="server">
                     <div id="groupPlaceholder" runat="server"></div>
@@ -134,7 +149,7 @@
             </SelectedItemTemplate>
         </asp:ListView>
         <br />
-        <asp:SqlDataSource ID="sqlEventos" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="Select p.Nombre as Promotor, e.Descripcion, e.Ubicacion, e.Fecha, e.Hora, c.Nombre as Categoría, e.Reservar, e.Tiempo_Reserva from dbo.Evento e inner join dbo.Persona p on e.Id_Persona = p.Id inner join dbo.Categoria c on e.Categoria = c.Id"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="sqlEventos" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT p.Nombre AS Promotor, e.Descripcion, e.Ubicacion, e.Fecha, e.Hora, c.Nombre AS Categoría, e.Reservar, e.Tiempo_Reserva, e.Nombre, i.Imagen, e.Id FROM Evento AS e INNER JOIN Persona AS p ON e.Id_Persona = p.Id INNER JOIN Categoria AS c ON e.Categoria = c.Id INNER JOIN Imagenes AS i ON e.Id = i.Id"></asp:SqlDataSource>
         <asp:SqlDataSource ID="sqlPersona" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT * FROM [Persona]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="sqlCategoria" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT * FROM [Categoria]"></asp:SqlDataSource>
     </div>

@@ -24,9 +24,16 @@
                 Ingrese la información del evento
             </h2>
             <div class="form-group">
+            <label for="NombreTextBox" class="col-sm-2 control-label">Nombre</label>
+                <div class="col-sm-12">
+                    <asp:TextBox ID="NombreTextBox" class="form-control" required="required" runat="server" TextMode="MultiLine" autofocus="autofocus" ></asp:TextBox>
+                </div>
+            </div>
+            
+            <div class="form-group">
             <label for="DescripcionTextBox" class="col-sm-2 control-label">Descripción</label>
                 <div class="col-sm-12">
-                    <asp:TextBox ID="DescripcionTextBox" class="form-control" runat="server" required="required" TextMode="MultiLine" autofocus="autofocus" />
+                    <asp:TextBox ID="DescripcionTextBox" class="form-control" runat="server" required="required" TextMode="MultiLine" />
                     
                 </div>
             </div>
@@ -73,14 +80,19 @@
                     <asp:TextBox ID="UbicacionTextBox" runat="server" class="form-control"  required="required" TextMode="MultiLine" />
                 </div>
             </div>
+            <div class="form-group" >
+            <label for="fileImage" class="col-sm-2 control-label">Imagen</label>
+                <div class="col-sm-12">
+                    <asp:FileUpload ID="fileImage" runat="server" class="form-control"  required="required"  />
+                </div>
+            </div>
             <div style="float:right; padding-top:10px;">
                 <asp:Button ID="Insert" class="btn btn-default" runat="server" Text="Crear" />
                 &nbsp;&nbsp;
                 <asp:linkButton ID="Cancel" runat="server" Text="Cancelar" PostBackUrl="~/Promotor/Eventos.aspx" />
             </div>
-        </div>                    
-                            
-         
+         </div>    
+
     <asp:SqlDataSource ID="sqlEventos" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DataBase %>" DeleteCommand="DELETE FROM [Evento] WHERE [Id] = @original_Id AND [Id_Persona] = @original_Id_Persona AND [Descripcion] = @original_Descripcion AND [Ubicacion] = @original_Ubicacion AND [Fecha] = @original_Fecha AND [Hora] = @original_Hora AND [Categoria] = @original_Categoria AND [Reservar] = @original_Reservar AND (([Tiempo_Reserva] = @original_Tiempo_Reserva) OR ([Tiempo_Reserva] IS NULL AND @original_Tiempo_Reserva IS NULL))" InsertCommand="INSERT INTO [Evento] ([Id], [Id_Persona], [Descripcion], [Ubicacion], [Fecha], [Hora], [Categoria], [Reservar], [Tiempo_Reserva]) VALUES (@Id, @Id_Persona, @Descripcion, @Ubicacion, @Fecha, @Hora, @Categoria, @Reservar, @Tiempo_Reserva)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Evento]" UpdateCommand="UPDATE [Evento] SET [Id_Persona] = @Id_Persona, [Descripcion] = @Descripcion, [Ubicacion] = @Ubicacion, [Fecha] = @Fecha, [Hora] = @Hora, [Categoria] = @Categoria, [Reservar] = @Reservar, [Tiempo_Reserva] = @Tiempo_Reserva WHERE [Id] = @original_Id AND [Id_Persona] = @original_Id_Persona AND [Descripcion] = @original_Descripcion AND [Ubicacion] = @original_Ubicacion AND [Fecha] = @original_Fecha AND [Hora] = @original_Hora AND [Categoria] = @original_Categoria AND [Reservar] = @original_Reservar AND (([Tiempo_Reserva] = @original_Tiempo_Reserva) OR ([Tiempo_Reserva] IS NULL AND @original_Tiempo_Reserva IS NULL))">
         <DeleteParameters>
             <asp:Parameter Name="original_Id" Type="Int32" />
