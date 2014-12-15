@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script>
+        function crearCookie(id) {
+            //var num = id.substring(8);
+            var d = new Date();
+            d.setDate(d.getDate + 1);
+            document.cookie = "category=" + id + "; expires=" + d;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     
@@ -10,9 +18,14 @@
             <div class="col-md-3">
                 <p class="lead">Categorias</p>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Conciertos</a>
-                    <a href="#" class="list-group-item">Eventos</a>
-                    <a href="#" class="list-group-item">Deportes</a>
+                    <asp:DataList ID="DataList1" runat="server" DataKeyField="Id" DataSourceID="sqlCategories">
+                        <ItemTemplate>
+                            <a class="list-group-item" id="Cat_<%# Eval("Id") %>" href="Eventos/IndexByCategory.aspx" onclick="crearCookie(<%# Eval("Id")%>)" style="width: 200%;"><asp:Label ID="NombreLabel" runat="server" Text='<%# Eval("Nombre") %>' /></a>
+                            
+                        </ItemTemplate>
+                    </asp:DataList>
+                    <asp:SqlDataSource ID="sqlCategories" runat="server" ConnectionString="<%$ ConnectionStrings:DataBase %>" SelectCommand="SELECT * FROM [Categoria] WHERE [Id] != 1"></asp:SqlDataSource>
+                    
                 </div>
             </div>
 
@@ -49,7 +62,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="assets/images/banner1.jpg" alt="">
+                            <img src="assets/images/banner1.jpg" alt="" />
                             <div class="caption">
                                 <h4 class="pull-right">$19.99</h4>
                                 <h4><a href="#">Deadmau5</a>
@@ -64,7 +77,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="assets/images/banner2.jpg" alt="">
+                            <img src="assets/images/banner2.jpg" alt="" />
                             <div class="caption">
                                 <h4 class="pull-right">$14.99</h4>
                                 <h4><a href="#">Neon Run</a>
@@ -77,7 +90,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="assets/images/banner3.jpg" alt="">
+                            <img src="assets/images/banner3.jpg" alt="" />
                             <div class="caption">
                                 <h4 class="pull-right">$44.99</h4>
                                 <h4><a href="#">Taylor Swift</a>
@@ -89,7 +102,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="assets/images/banner4.jpg" alt="">
+                            <img src="assets/images/banner4.jpg" alt="" />
                             <div class="caption">
                                 <h4 class="pull-right">$34.99</h4>
                                 <h4><a href="#">Billy Joel</a>
