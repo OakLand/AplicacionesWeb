@@ -71,9 +71,6 @@
                         </ul>
                         
                     </li>
-                    <li>
-                        <a href="/About.aspx">Contáctanos</a>
-                    </li>
                     <li class="Conectado">
                         <label id="user" runat="server" style="color: white;height: 40px;padding-top: 14px; margin-left:5px; font: small-caption"></label>
                     </li>

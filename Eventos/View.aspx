@@ -74,42 +74,23 @@
             &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
         </InsertItemTemplate>
         <ItemTemplate>
-            <asp:Image ID="Imagen" runat="server" ImageUrl='<%# Bind("Imagen") %>' Width="200" />
-            <br />
-            <br />
-            Promotor:
-            <asp:Label ID="PromotorLabel" runat="server" Text='<%# Bind("Promotor") %>' />
-            <br />
-            Evento:
-            <asp:Label ID="EventoLabel" runat="server" Text='<%# Bind("Evento") %>' />
-            <br />
-            Descripcion:
-            <asp:Label ID="DescripcionLabel" runat="server" Text='<%# Bind("Descripcion") %>' />
-            <br />
-            Ubicacion:
-            <asp:Label ID="UbicacionLabel" runat="server" Text='<%# Bind("Ubicacion") %>' />
-            <br />
-            Fecha:
-            <asp:Label ID="FechaLabel" runat="server" Text='<%# Bind("Fecha") %>' />
-            <br />
-            Hora:
-            <asp:Label ID="HoraLabel" runat="server" Text='<%# Bind("Hora") %>' />
-            <br />
-            Categoria:
-            <asp:Label ID="CategoriaLabel" runat="server" Text='<%# Bind("Categoria") %>' />
-            <br />
-            Reservar:
-            <asp:Label ID="ReservarLabel" runat="server" Text='<%# Bind("Reservar") %>' />
-            <br />
-            Dias de Reserva:
-            <asp:Label ID="Dias_de_ReservaLabel" runat="server" Text='<%# Bind("[Dias de Reserva]") %>' />
-            <br />
-
+            <div class="thumbnail">
+                <asp:Image ID="Imagen" runat="server" CssClass="img-responsive" ImageUrl='<%# Bind("Imagen") %>'/>
+                <div class="caption-full">
+                    <h4 class="pull-right"><asp:Label ID="UbicacionLabel" runat="server" Text='<%# Bind("Ubicacion") %>' /></h4>
+                    <h4><asp:Label ID="EventoLabel" runat="server" Text='<%# Bind("Evento") %>' /></h4>
+                    <p><asp:Label ID="DescripcionLabel" runat="server" Text='<%# Bind("Descripcion") %>' /></p>
+                    <div class="ratings">
+                        <p>Hora: <asp:Label ID="Label1" runat="server" Text='<%# Bind("Hora") %>' /></p>
+                        <p>Fecha: <asp:Label ID="Label2" runat="server" Text='<%# Bind("Fecha") %>' /></p>
+                    </div>
+                </div>
+            </div>
         </ItemTemplate>
     </asp:FormView>
     <br />
     <div>
-        <asp:GridView ID="gridBoletos" runat="server" AutoGenerateColumns="False" DataSourceID="sqlBoletos" GridLines="None">
+        <asp:GridView ID="gridBoletos" runat="server" CssClass="table-hover table table-striped" AutoGenerateColumns="False" DataSourceID="sqlBoletos" GridLines="None">
             <Columns>
                 <asp:CommandField SelectText="Reservar" ShowSelectButton="True" />
                 <asp:BoundField DataField="Area" HeaderText="Area" SortExpression="Area" />
