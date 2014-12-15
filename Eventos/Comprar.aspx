@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Comprar.aspx.vb" Inherits="Eventos_Comprar" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" Runat="Server" ContentPlaceHolderID="head">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" Runat="Server" ContentPlaceHolderID="ContentPlaceHolder1">
     <br />
     <asp:FormView ID="FormView1" runat="server" DataSourceID="sqlEvento">
         <EditItemTemplate>

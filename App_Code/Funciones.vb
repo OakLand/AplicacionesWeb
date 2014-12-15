@@ -444,4 +444,50 @@ Public Class Funciones
         End Try
         Return False
     End Function
+
+    Public Function GetEventImage(ByVal Id As Integer) As String
+        Try
+            Conectado()
+            cmd = New SqlCommand("GetEventImagen")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.Parameters.AddWithValue("@id", Id)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+            If dr.HasRows = True Then
+                For Each item As System.Data.Common.DbDataRecord In dr
+                    Return item.GetString(0)
+                Next
+            End If
+        Catch ex As Exception
+            MsgBox("Error al Obtener Imagen: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+        Return ""
+    End Function
+
+    Public Function GetEmail(ByVal Id As Integer) As String
+        Try
+            Conectado()
+            cmd = New SqlCommand("getEmail")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.Parameters.AddWithValue("@id", Id)
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+            If dr.HasRows = True Then
+                For Each item As System.Data.Common.DbDataRecord In dr
+                    Return item.GetString(0)
+                Next
+            End If
+        Catch ex As Exception
+            MsgBox("Error al Obtener Imagen: " & ex.Message)
+        Finally
+            Desconectado()
+        End Try
+        Return ""
+    End Function
 End Class
