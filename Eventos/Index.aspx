@@ -114,7 +114,6 @@
                     </div>
                 </div>
             </ItemTemplate>
-<<<<<<< HEAD
             <LayoutTemplate>
                 <div class="row text-center" id="groupPlaceholderContainer" runat="server">
                     <div id="groupPlaceholder" runat="server"></div>
